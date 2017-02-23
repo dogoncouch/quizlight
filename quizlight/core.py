@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # MIT License
 # 
@@ -34,7 +34,11 @@ def get_input(options=[], prompt='Press ENTER to continue.',
 
     choice = None
     while not choice:
-        choice = input('\n' + prompt + ' (type q to quit) ')
+        try:
+            choice = input('\n' + prompt + ' (type q to quit) ')
+        except SyntaxError:
+            if options == []:
+                pass
         if choice:
             if choice in options:
                 return choice
@@ -42,13 +46,14 @@ def get_input(options=[], prompt='Press ENTER to continue.',
                 is_sure = input('Are you sure you want to quit? ')
                 if is_sure in ('Y', 'y', 'yes'):
                     exit('\nThanks for playing. Goodbye.\n')
-                else:
-                    choice = None
+                # else:
+                #     choice = None
             elif options == []:
                 return 0
             else:
                 print(second_prompt)
-                choice = None
+                if options:
+                    choice = None
         elif options == []:
             return 0
         else:
@@ -121,7 +126,7 @@ def do_review(material, total, correct):
 def load_chapter():
     """Asks tutorial chapter questions for a given chapter."""
 
-    import material
+    import quizlight.material
     
     chapt = None
     while not chapt:
@@ -134,11 +139,11 @@ def load_chapter():
             print('Chapter tests only go up to 15.')
             chapt = None
     
-    if chapt == 1: questions = material.chapter1
-    if chapt == 2: questions = material.chapter2
-    if chapt == 3: questions = material.chapter3
-    if chapt == 4: questions = material.chapter4
-    if chapt == 5: questions = material.chapter5
+    if chapt == 1: questions = quizlight.material.chapter1
+    if chapt == 2: questions = quizlight.material.chapter2
+    if chapt == 3: questions = quizlight.material.chapter3
+    if chapt == 4: questions = quizlight.material.chapter4
+    if chapt == 5: questions = quizlight.material.chapter5
     
     total = len(questions)
     correct = 0
@@ -167,4 +172,5 @@ def load_chapter():
 
 
 
-load_chapter()
+if __name__ == "__main__":
+    load_chapter()
