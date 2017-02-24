@@ -26,7 +26,7 @@
 # Multiple choice testing program
 # Runs multiple choice tests from modules
 # Loads list of questions, each question is a list with these elements:
-# Question, Answer, Reason (optional, coming soon)
+# Question, Answer, Options (coming soon), Reason (optional, coming soon)
 
 import quizlight.modules.python3
 
@@ -37,7 +37,7 @@ def get_input(options=[], prompt='Press ENTER to continue.',
     choice = None
     while not choice:
         try:
-            choice = input('\n' + prompt + ' (type q to quit) ')
+            choice = input(prompt + ' (type q to quit) ')
         except SyntaxError:
             if options == []:
                 pass
@@ -47,7 +47,7 @@ def get_input(options=[], prompt='Press ENTER to continue.',
             elif choice == 'q':
                 is_sure = input('Are you sure you want to quit? ')
                 if is_sure in ('Y', 'y', 'yes'):
-                    exit('\nThanks for playing. Goodbye.\n')
+                    exit('Thanks for playing. Goodbye.\n')
                 # else:
                 #     choice = None
             elif options == []:
@@ -66,16 +66,18 @@ def get_input(options=[], prompt='Press ENTER to continue.',
 def ask_question(chapt, qnum, q, a, r=None):
     """Asks a multiple choice question."""
 
+    # To Do: add options to questions in modules
+
     status = None
-    printed_qnum = 'Question # ' + str(qnum)
-    printed_qpr = '\nYour answer (a, b, c, or d)?'
-    printed_q = '\n\n\n\n\n' + printed_qnum + '\n\n' + q + printed_qpr
+    printed_qnum = '======== Question # ' + str(qnum) + ' ========'
+    printed_qpr = 'Your answer (a, b, c, d)?'
+    printed_q = '\n\n' + printed_qnum + '\n' + q + '\n' + printed_qpr
     
     x = get_input(['a', 'b', 'c', 'd'], printed_q,
                 'Answer must be a, b, c, or d')
     
     if chapt == 1 and qnum == 3 and x == 'd':
-        exit('\n' * 10 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 10)
+        exit('\n' * 5 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 5)
     if x == a:
         print('Correct!')
         status = 1
@@ -92,7 +94,7 @@ def ask_question(chapt, qnum, q, a, r=None):
 def do_review(material, total, correct):
     """Reviews test questions."""
 
-    print('\n\n\n\n\n        ==== Finished! ====\n')
+    print('\n\n======== Finished! ========\n')
     print('Score:', str(int(correct / total * 100)) + '%')
     print('Missed questions:', int(total - correct), 'out of', total)
 
@@ -111,7 +113,7 @@ def do_review(material, total, correct):
         else:
             if not anything_there: anything_there = 1
             rn, rq, ra, rx, rr = info
-            print('\n\n\n\n\nQuestion #' + str(rn))
+            print('\n\n======== Question #' + str(rn) + ' ========')
             print(rq)
             print('Your answer:', rx)
             print('Correct answer:', ra)
@@ -134,7 +136,7 @@ def load_chapter():
         try:
             chapt = int(input('\nFor which chapter are we testing? '))
         except ValueError:
-            print('Input must be a number from 1 to 15.')
+            print('Input must be a number from 1 to 4.')
             chapt = None
         if not chapt in range(1, 16):
             print('Chapter tests only go up to 15.')
@@ -144,14 +146,13 @@ def load_chapter():
     if chapt == 2: questions = quizlight.modules.python3.chapter2
     if chapt == 3: questions = quizlight.modules.python3.chapter3
     if chapt == 4: questions = quizlight.modules.python3.chapter4
-    if chapt == 5: questions = quizlight.modules.python3.chapter5
     
     total = len(questions)
     correct = 0
     qnum = 0
     material = []
     
-    print('\n\n\n\n\n' + str(total) + ' questions for this chapter.')
+    print('\n\n' + str(total) + ' questions for this chapter.')
     get_input([], 'Press ENTER to start.')
     
     #
