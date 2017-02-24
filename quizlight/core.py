@@ -24,9 +24,11 @@
 
 
 # Multiple choice testing program
-# Runs multiple choice tests from material modules
-# Loads list of questions, each question has these list elements:
-# Question, Answer, Reason (coming soon)
+# Runs multiple choice tests from modules
+# Loads list of questions, each question is a list with these elements:
+# Question, Answer, Reason (optional, coming soon)
+
+import quizlight.modules.python3
 
 def get_input(options=[], prompt='Press ENTER to continue.',
         second_prompt = 'Just ENTER.'):
@@ -126,7 +128,6 @@ def do_review(material, total, correct):
 def load_chapter():
     """Asks tutorial chapter questions for a given chapter."""
 
-    import quizlight.material
     
     chapt = None
     while not chapt:
@@ -139,11 +140,11 @@ def load_chapter():
             print('Chapter tests only go up to 15.')
             chapt = None
     
-    if chapt == 1: questions = quizlight.material.chapter1
-    if chapt == 2: questions = quizlight.material.chapter2
-    if chapt == 3: questions = quizlight.material.chapter3
-    if chapt == 4: questions = quizlight.material.chapter4
-    if chapt == 5: questions = quizlight.material.chapter5
+    if chapt == 1: questions = quizlight.modules.python3.chapter1
+    if chapt == 2: questions = quizlight.modules.python3.chapter2
+    if chapt == 3: questions = quizlight.modules.python3.chapter3
+    if chapt == 4: questions = quizlight.modules.python3.chapter4
+    if chapt == 5: questions = quizlight.modules.python3.chapter5
     
     total = len(questions)
     correct = 0
@@ -154,12 +155,12 @@ def load_chapter():
     get_input([], 'Press ENTER to start.')
     
     #
-    # Add reason r to material, and next for loop.
+    # Add reason r to modules.python3, and next for loop.
     #
     for q, a in questions:
         qnum = qnum + 1
         #
-        # Remove next line once r is in material
+        # Remove next line once r is in modules.python3
         #
         r = None
         status, info = ask_question(chapt, qnum, q, a, r)

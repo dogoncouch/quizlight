@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # MIT License
 # 
@@ -23,6 +23,6 @@
 # SOFTWARE.
 
 import quizlight.core
-import quizlight.material
+# import quizlight.modules.python3
 
 quizlight.core.load_chapter()
