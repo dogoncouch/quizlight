@@ -575,7 +575,7 @@ chapter4 = [
     b. [1]
     c. [1, 2]
     d. 1, 2
-    """, 'b'],
+    """, 'c'],
 
     ["""
     In a function, keyword arguments must be:
