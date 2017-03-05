@@ -142,12 +142,13 @@ def load_chapter():
     for m in quizmodules:
         print(m)
     print()
-    modchoice = get_input(quizmodules, 'Your choice? ')
+    modchoice = get_input(quizmodules, 'Your choice?')
     if modchoice in quizmodules: material = quizmodules[modchoice].chapters
 
     while not chapt:
         try:
-            chapt = int(input('\nFor which chapter are we testing? '))
+            chapt = int(input('\nFor which chapter are we testing? (1-' +\
+                    str(len(material)) + ') '))
         except ValueError:
             print('Input must be a number from 1 to ' + \
                     str(len(material)) + '.')
