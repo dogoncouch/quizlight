@@ -25,7 +25,8 @@
 
 # Multiple choice testing program
 # Runs multiple choice tests from modules
-# Loads list of questions, each question is a list with these elements:
+# Loads list of chapters. Each chapter is a list of questions.
+# Each question is a list with these elements:
 # Question, Answer, Options, Reason
 
 import quizlight.modules.python3
@@ -47,37 +48,30 @@ def get_input(options=[], prompt='Press ENTER to continue.'):
                 is_sure = input('Are you sure you want to quit? ')
                 if is_sure in ('Y', 'y', 'yes'):
                     exit('Thanks for playing. Goodbye.\n')
-                # else:
-                #     choice = None
             elif options == []:
                 return 0
             else:
                 print('Answer must be one of ' + str(options) +
-                        '. Your answer?'))
+                        '. Your answer?')
                 if options:
                     choice = None
         elif options == []:
             return 0
         else:
-            print(print 'Answer must be one of ' + str(options) +
-                    '. Your answer?'))
+            print('Answer must be one of ' + str(options) + 
+                    '. Your answer?')
 
 
 
 def ask_question(chapt, qnum, q, a, op, r=None):
     """Asks a multiple choice question."""
 
-    # To Do: add options to questions in modules
-
     status = None
     printed_qnum = '======== Question # ' + str(qnum) + ' ========'
     printed_qpr = 'Your answer ' + str(op) + '?'
-    # printed_qpr = 'Your answer (a, b, c, d)?'
     printed_q = '\n\n' + printed_qnum + '\n' + q + '\n' + printed_qpr
     
     x = get_input(op, printed_q)
-    # x = get_input(['a', 'b', 'c', 'd'], printed_q,
-    #             'Answer must be a, b, c, or d')
     
     if chapt == 1 and qnum == 3 and x == 'd':
         exit('\n' * 5 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 5)
@@ -101,9 +95,8 @@ def do_review(material, total, correct):
     print('Score:', str(int(correct / total * 100)) + '%')
     print('Missed questions:', int(total - correct), 'out of', total)
 
-    options = ['y', 'Y', 'yes', 'n', 'N', 'no', 'a', 'A', 'all']
-    mode = get_input(options, '\nReview questions? (yes/no/all)',
-            'Please enter y, n, or a.')
+    ouroptions = ['y', 'Y', 'yes', 'n', 'N', 'no', 'a', 'A', 'all']
+    mode = get_input(ouroptions, '\nReview questions? (yes/no/all)')
     if mode in ['n', 'N', 'no']:
         exit('\nThanks for playing. Goodbye.\n')
     elif mode in ['y', 'Y', 'yes']: review_all = 0
@@ -128,25 +121,25 @@ def do_review(material, total, correct):
         print('Score: 100%')
         get_input()
 
+
+
 def load_chapter():
     """Asks tutorial chapter questions for a given chapter."""
 
-    
     chapt = None
+    material = quizlight.modules.python3.chapters
     while not chapt:
         try:
             chapt = int(input('\nFor which chapter are we testing? '))
         except ValueError:
-            print('Input must be a number from 1 to 4.')
+            print('Input must be a number from 1 to ' + \
+                    str(len(material)) + '.')
             chapt = None
-        if not chapt in range(1, 16):
-            print('Chapter tests only go up to 15.')
+        if not chapt in range(1, len(material) + 1):
+            print('Chapter tests only go up to ' + str(len(material)) + '.')
             chapt = None
     
-    if chapt == 1: questions = quizlight.modules.python3.chapter1
-    if chapt == 2: questions = quizlight.modules.python3.chapter2
-    if chapt == 3: questions = quizlight.modules.python3.chapter3
-    if chapt == 4: questions = quizlight.modules.python3.chapter4
+    questions = material[chapt-1]
     
     total = len(questions)
     correct = 0
