@@ -129,8 +129,6 @@ def load_chapter():
     """Asks tutorial chapter questions for a given chapter."""
 
     chapt = None
-    # material = quizlight.modules.python3.chapters
-    # ourmodules = quizlight.modules.__all__
     
     quizmodules = {}
     for m in sorted(quizlight.modules.__all__):
