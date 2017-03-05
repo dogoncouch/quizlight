@@ -29,7 +29,9 @@
 # Each question is a list with these elements:
 # Question, Answer, Options, Reason
 
-import quizlight.modules.python3
+import gettext
+gettext.install('quizlight')
+import quizlight.modules
 
 def get_input(options=[], prompt='Press ENTER to continue.'):
     """Ask for input, and check its sanity. (q to quit)"""
@@ -127,7 +129,24 @@ def load_chapter():
     """Asks tutorial chapter questions for a given chapter."""
 
     chapt = None
-    material = quizlight.modules.python3.chapters
+    # material = quizlight.modules.python3.chapters
+    # ourmodules = quizlight.modules.__all__
+    
+    quizmodules = {}
+    for m in sorted(quizlight.modules.__all__):
+        quizmodules[m] = \
+                __import__('quizlight.modules.' + m, globals(), locals(),
+                [quizlight])
+                # __import__('quizlight.modules.' + m, globals(), locals(),
+                # [quizlight])
+
+    print('Select a module:')
+    for m in quizmodules:
+        print(m)
+    print()
+    modchoice = get_input(quizmodules, 'Your choice? ')
+    if modchoice in quizmodules: material = quizmodules[modchoice].chapters
+
     while not chapt:
         try:
             chapt = int(input('\nFor which chapter are we testing? '))
