@@ -26,12 +26,11 @@
 # Multiple choice testing program
 # Runs multiple choice tests from modules
 # Loads list of questions, each question is a list with these elements:
-# Question, Answer, Options (coming soon), Reason (optional, coming soon)
+# Question, Answer, Options, Reason
 
 import quizlight.modules.python3
 
-def get_input(options=[], prompt='Press ENTER to continue.',
-        second_prompt = 'Just ENTER.'):
+def get_input(options=[], prompt='Press ENTER to continue.'):
     """Ask for input, and check its sanity. (q to quit)"""
 
     choice = None
@@ -53,28 +52,32 @@ def get_input(options=[], prompt='Press ENTER to continue.',
             elif options == []:
                 return 0
             else:
-                print(second_prompt)
+                print('Answer must be one of ' + str(options) +
+                        '. Your answer?'))
                 if options:
                     choice = None
         elif options == []:
             return 0
         else:
-            print(second_prompt)
+            print(print 'Answer must be one of ' + str(options) +
+                    '. Your answer?'))
 
 
 
-def ask_question(chapt, qnum, q, a, r=None):
+def ask_question(chapt, qnum, q, a, op, r=None):
     """Asks a multiple choice question."""
 
     # To Do: add options to questions in modules
 
     status = None
     printed_qnum = '======== Question # ' + str(qnum) + ' ========'
-    printed_qpr = 'Your answer (a, b, c, d)?'
+    printed_qpr = 'Your answer ' + str(op) + '?'
+    # printed_qpr = 'Your answer (a, b, c, d)?'
     printed_q = '\n\n' + printed_qnum + '\n' + q + '\n' + printed_qpr
     
-    x = get_input(['a', 'b', 'c', 'd'], printed_q,
-                'Answer must be a, b, c, or d')
+    x = get_input(op, printed_q)
+    # x = get_input(['a', 'b', 'c', 'd'], printed_q,
+    #             'Answer must be a, b, c, or d')
     
     if chapt == 1 and qnum == 3 and x == 'd':
         exit('\n' * 5 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 5)
@@ -86,7 +89,7 @@ def ask_question(chapt, qnum, q, a, r=None):
         if r: print(r)
     get_input()
     
-    info = [qnum, q, a, x, r]
+    info = [qnum, q, a, op, x, r]
     return status, info
 
 
@@ -112,7 +115,7 @@ def do_review(material, total, correct):
             continue
         else:
             if not anything_there: anything_there = 1
-            rn, rq, ra, rx, rr = info
+            rn, rq, ra, ro, rx, rr = info
             print('\n\n======== Question #' + str(rn) + ' ========')
             print(rq)
             print('Your answer:', rx)
@@ -124,8 +127,6 @@ def do_review(material, total, correct):
         print('\nAll answers correct! No need for review.')
         print('Score: 100%')
         get_input()
-
-
 
 def load_chapter():
     """Asks tutorial chapter questions for a given chapter."""
@@ -155,16 +156,9 @@ def load_chapter():
     print('\n\n' + str(total) + ' questions for this chapter.')
     get_input([], 'Press ENTER to start.')
     
-    #
-    # Add reason r to modules.python3, and next for loop.
-    #
-    for q, a in questions:
+    for q, a, op, r in questions:
         qnum = qnum + 1
-        #
-        # Remove next line once r is in modules.python3
-        #
-        r = None
-        status, info = ask_question(chapt, qnum, q, a, r)
+        status, info = ask_question(chapt, qnum, q, a, op, r)
         if status: correct = correct + 1
         material.append([status, info])
     

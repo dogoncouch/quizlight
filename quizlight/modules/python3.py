@@ -32,7 +32,7 @@ chapter1 = [
     b. Dave
     c. Ed
     d. Fluffy
-    """, 'a'],
+    """, 'a', ['a','b','c','d'], None],
     
     ["""
     What is your quest?
@@ -41,7 +41,7 @@ chapter1 = [
     b. To buy some cheese
     c. To seek the grail
     d. To destroy a ring
-    """, 'c'],
+    """, 'c', ['a','b','c','d'], None],
     
     ["""
     What is the air speed velocity of an unladen swallow?
@@ -50,8 +50,9 @@ chapter1 = [
     b. 31-40 mph
     c. 7 mph
     d. I don't know that.
-    """, 'b']
+    """, 'b', ['a','b','c','d'], None]
     ]
+
 chapter2 = [
     ["""
     The python interpreter's primary prompt typically looks like:
@@ -60,7 +61,7 @@ chapter2 = [
     b. $
     c. ...
     d. >>>
-    """, 'd'],
+    """, 'd'], ['a','b','c','d'], None,
 
     ["""
     An end-of-file (EOF) character (ctrl-D in unix, ctrl-Z in
@@ -71,7 +72,7 @@ chapter2 = [
     b. Get ready for a new command
     c. Exit with a zero status
     d. Switch to autopilot mode
-    """, 'c'],
+    """, 'c', ['a','b','c','d'], None],
 
     ["""
     To run a python module called module_example as a script, you
@@ -81,7 +82,7 @@ chapter2 = [
     b. module_example -python3
     c. python3 -m module_example
     d. python3 -script module_example
-    """, 'c'],
+    """, 'c', ['a','b','c','d'], None],
 
     ["""
     The first argument passed when starting the interpreter (e.g.
@@ -91,7 +92,7 @@ chapter2 = [
     b. The global arguments variable
     c. sys.argv[1] in the sys module
     d. The castle aaargh
-    """, 'a'],
+    """, 'a', ['a','b','c','d'], None],
 
     ["""
     In the python interpreter, the secondary prompt (usually "...")
@@ -101,7 +102,7 @@ chapter2 = [
     b. The interpreter is in limited mode
     c. The interpreter expects a continuation of the previous line
     d. The interpreter is pausing to let you catch up
-    """, 'c'],
+    """, 'c', ['a','b','c','d'], None],
 
     ["""
     By default, python assumes source files are encoded in:
@@ -110,7 +111,7 @@ chapter2 = [
     b. UTF-16
     c. Esperanto
     d. The enigma cipher
-    """, 'a'],
+    """, 'a', ['a','b','c','d'], None],
 
     ["""
     Opening the python interpreter in "interactive mode" means:
@@ -120,7 +121,7 @@ chapter2 = [
        give you input
     c. You want the interpreter to interact with your program
     d. You can only run scripts
-    """, 'a'],
+    """, 'a', ['a','b','c','d'], None],
 
     ["""
     When python is started with a filename as an argument, it will:
@@ -129,7 +130,8 @@ chapter2 = [
     b. Check to see if that file is a python file
     c. Output to that file
     d. Run that file as a script
-    """, 'd']]
+    """, 'd', ['a','b','c','d'], None]
+    ]
 
 chapter3 = [
     ["""
@@ -139,7 +141,7 @@ chapter3 = [
     b. Using curly brackets: { }
     c. Using parenthesis: ( )
     d. Using indentation
-    """, 'd'],
+    """, 'd', ['a','b','c','d'], None],
 
     ["""
     In the interpreter, how do you tell python you are finished
@@ -149,7 +151,7 @@ chapter3 = [
     b. With a closing curley bracket - }
     c. By entering a blank line
     d. By typing ctrl-D (or ctrl-Z in Windows)
-    """, 'c'],
+    """, 'c', ['a','b','c','d'], None],
 
     ["""
     Which of the following is a comment in python?
@@ -158,7 +160,7 @@ chapter3 = [
     b. # This is a comment
     c. // This is a comment
     d. /* This is a comment
-    """, 'b'],
+    """, 'b', ['a','b','c','d'], None],
 
     ["""
     Suppose we enter the following into the interpreter:
@@ -171,7 +173,7 @@ chapter3 = [
     b. float
     c. string
     d. literal
-    """, 'b'],
+    """, 'b', ['a','b','c','d'], None],
 
     ["""
     Which equation will get the square of 2?
@@ -180,7 +182,7 @@ chapter3 = [
     b. 2 ^2
     c. 2 **
     d. sq(2)
-    """, 'a'],
+    """, 'a', ['a','b','c','d'], None],
 
     ["""
     Which operator returns the remainder of a division?
@@ -189,7 +191,7 @@ chapter3 = [
     b. &
     c. /r
     d. %
-    """, 'd'],
+    """, 'd', ['a','b','c','d'], None],
 
     ["""
     Which of these will output the number 23 with type int?
@@ -198,7 +200,7 @@ chapter3 = [
     b. (23 / 5) * 5
     c. (23 // 5) * 5 + (23 % 5)
     d. 23 / (5 * 5)
-    """, 'c'],
+    """, 'c', ['a','b','c','d'], None],
 
     ["""
     Which of these numbers would have type float?
@@ -207,7 +209,7 @@ chapter3 = [
     b. 5,000,561
     c. 2
     d. '42'
-    """, 'a'],
+    """, 'a', ['a','b','c','d'], None],
 
     ["""
     How would you assign a value of 4 to the variable shrubbery?
@@ -216,7 +218,7 @@ chapter3 = [
     b. set shrubbery == 4
     c. shrubbery = 4
     d. 4 = shrubbery
-    """, 'c'],
+    """, 'c', ['a','b','c','d'], None],
 
     ["""What happens when you divide an int by a float?
 
@@ -224,7 +226,7 @@ chapter3 = [
     b. The resulting number is type float
     c. The resulting number is type int
     d. The resulting number is type string
-    """, 'b'],
+    """, 'b', ['a','b','c','d'], None],
 
     ["""
     The last printed expression is automatically assigned to which
@@ -234,7 +236,7 @@ chapter3 = [
     b. ^
     c. L
     d. _
-    """, 'd'],
+    """, 'd', ['a','b','c','d'], None],
 
     ["""
     Suppose we type the following into the interpreter:
@@ -251,7 +253,7 @@ chapter3 = [
     c. 'dead' 'pushing up the daisies'
     d. 'dead'
        'pushing up the daisies'
-    """, 'b'],
+    """, 'b', ['a','b','c','d'], None],
 
     ["""
     Which input would result in the following output?
@@ -262,7 +264,7 @@ chapter3 = [
     b. print(""You're using coconuts!"")
     c. print('"You\\'re using coconuts!"')
     d. print("You\\'re using coconuts!")
-    """, 'c'],
+    """, 'c', ['a','b','c','d'], None],
 
     ["""
     Suppose you want to create a string literal, which can span multiple
@@ -276,7 +278,7 @@ chapter3 = [
        Blue.'''
     d. ('What is your favorite color?
        Blue.')
-    """, 'b'],
+    """, 'b', ['a','b','c','d'], None],
 
     ["""
     If you have already assigned the variable occupation as follows:
@@ -291,7 +293,7 @@ chapter3 = [
     b. "I'm a", occupation, " and I'm ok"
     c. "I'm a " + occupation + " and I'm ok"
     d. "I'm a" + occupation + "and I'm ok"
-    """, 'c'],
+    """, 'c', ['a','b','c','d'], None],
 
     ["""
     If the variable cheese is set to 'Stilton', which of these will
@@ -301,7 +303,7 @@ chapter3 = [
     b. cheese[1:4]
     c. cheese[2:5]
     d. cheese[2-5]
-    """, 'a'],
+    """, 'a', ['a','b','c','d'], None],
     
     ["""
     If the variable weapon is set to 'grapefruit', what will be the
@@ -311,7 +313,7 @@ chapter3 = [
     b. 'u'
     c. 'it'
     d. 'i'
-    """, 'd'],
+    """, 'd', ['a','b','c','d'], None],
 
     ["""
     Assuming the following input:
@@ -326,7 +328,7 @@ chapter3 = [
     b. [1, 9, 3, 7, 6, 2]
     c. [9, 1, 6, 3, 7, 6, 2]
     d. [9, 1, 6, 3, 7, 2]
-    """, 'b'],
+    """, 'b', ['a','b','c','d'], None],
 
     ["""
     Assuming the variable y is set as follows:
@@ -339,7 +341,7 @@ chapter3 = [
     b. y[2][1]
     c. y[1][2]
     d. y[1][1]
-    """, 'd'],
+    """, 'd', ['a','b','c','d'], None],
 
     ["""
     Which of these will successfully start a while loop?
@@ -348,7 +350,7 @@ chapter3 = [
     b. while x = 2:
     c. while x == 2
     d. while x == 2:
-    """, 'd'],
+    """, 'd', ['a','b','c','d'], None],
 
     ["""
     Assuming the following input:
@@ -365,7 +367,7 @@ chapter3 = [
     b. 3
     c. 5
     d. 6
-    """, 'a']]
+    """, 'a', ['a','b','c','d'], None]]
 
 #chapter 4:
 #if: 2 qs
@@ -389,7 +391,7 @@ chapter4 = [
        conditions for the if statement are met
     d. Python will disregard the original if statement; it is just there
        as a place holder.
-    """, 'b'],
+    """, 'b', ['a','b','c','d'], None],
 
     ["""
     If we input the following:
@@ -408,7 +410,7 @@ chapter4 = [
     b. Too few.
     c. Just right.
     d. Nothing
-    """, 'c'],
+    """, 'c', ['a','b','c','d'], None],
 
     ["""
     If we input the following:
@@ -426,7 +428,7 @@ chapter4 = [
        '10'
     d. 6
        10
-    """, 'd'],
+    """, 'd', ['a','b','c','d'], None],
 
     ["""
     If we input the following:
@@ -442,7 +444,7 @@ chapter4 = [
     b. 2
     c. 3
     d. 9
-    """, 'a'],
+    """, 'a', ['a','b','c','d'], None],
 
     ["""
     If shopping is a list, and x = 3, what is shopping[x]?
@@ -451,7 +453,7 @@ chapter4 = [
     b. All of the items in the list shopping
     c. The fourth item in the list shopping
     d. The third item in the list shopping
-    """, 'c'],
+    """, 'c', ['a','b','c','d'], None],
 
     ["""
     How many numbers are there in range(1, 10, 2)?
@@ -460,7 +462,7 @@ chapter4 = [
     b. 5
     c. 6
     d. 10
-    """, 'b'],
+    """, 'b', ['a','b','c','d'], None],
 
     ["""
     A break statement does which of the following?
@@ -470,7 +472,7 @@ chapter4 = [
     c. Causes a program to end in an error
     d. Goes straight to any else: statements in the for or while
        loop
-    """, 'a'],
+    """, 'a', ['a','b','c','d'], None],
 
     ["""
     If we input the following:
@@ -486,7 +488,7 @@ chapter4 = [
     b. 2
     c. 3
     d. 1
-    """, 'd'],
+    """, 'd', ['a','b','c','d'], None],
 
     ["""
     A pass statement does which of the following?
@@ -495,7 +497,7 @@ chapter4 = [
     b. Breaks out of the current loop
     c. It doesn't do anything
     d. Clears a variable
-    """, 'c'],
+    """, 'c', ['a','b','c','d'], None],
 
     ["""
     If a variable is created inside a function, where is it stored?
@@ -504,7 +506,7 @@ chapter4 = [
     b. The function's local symbol table
     c. The table of built-in names
     d. The docstring
-    """, 'b'],
+    """, 'b', ['a','b','c','d'], None],
 
     ["""
     If a variable is called inside of a function, where will python search
@@ -514,7 +516,7 @@ chapter4 = [
     b. Python's built-in names
     c. The docstring
     d. That function's local symbol table
-    """, 'd'],
+    """, 'd', ['a','b','c','d'], None],
 
     ["""
     If a function has no return statement, what value will it return?
@@ -523,7 +525,7 @@ chapter4 = [
     b. 0
     c. 1
     d. Its own name
-    """, 'a'],
+    """, 'a', ['a','b','c','d'], None],
 
     ["""
     In the following:
@@ -536,7 +538,7 @@ chapter4 = [
     b. A method
     c. An object
     d. A definition
-    """, 'b'],
+    """, 'b', ['a','b','c','d'], None],
 
     ["""
     In the following function:
@@ -557,7 +559,7 @@ chapter4 = [
     b. A mandatory argument
     c. An object
     d. A type
-    """, 'a'],
+    """, 'a', ['a','b','c','d'], None],
 
     ["""
     If we input the following:
@@ -575,7 +577,7 @@ chapter4 = [
     b. [1]
     c. [1, 2]
     d. 1, 2
-    """, 'b'],
+    """, 'b', ['a','b','c','d'], None],
 
     ["""
     In a function, keyword arguments must be:
@@ -584,7 +586,7 @@ chapter4 = [
     b. Between positional arguments
     c. After all positional arguments
     d. Preceded by a number
-    """, 'c'],
+    """, 'c', ['a','b','c','d'], None],
 
     ["""
     Which one of these function calls contains a keyword argument?
@@ -593,7 +595,7 @@ chapter4 = [
     b. f = our_function(20)
     c. f = our_function('word', 20)
     d. f = our_function('word', number=20)
-    """, 'd'],
+    """, 'd', ['a','b','c','d'], None],
 
     ["""
     In a function that starts as follows:
@@ -606,4 +608,5 @@ chapter4 = [
     b. All keyword arguments after arg
     c. All keyword arguments including arg, if arg is entered as arg=my_arg
     d. All arguments of any kind after arg
-    """, 'b']]
+    """, 'b', ['a','b','c','d'], None]
+    ]

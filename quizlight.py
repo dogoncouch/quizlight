@@ -23,6 +23,5 @@
 # SOFTWARE.
 
 import quizlight.core
-# import quizlight.modules.python3
 
 quizlight.core.load_chapter()
