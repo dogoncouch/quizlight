@@ -32,7 +32,8 @@ def get_input(options=[], prompt='Press ENTER to continue.'):
     choice = None
     while not choice:
         try:
-            choice = input(prompt + ' ' + str(options) + ' (type q to quit) ')
+            choice = str(input(prompt + ' ' + str(options) + \
+                    ' (type q to quit) '))
         except SyntaxError:
             if options == []:
                 pass
@@ -143,18 +144,10 @@ def load_chapter():
         material = quizmodules[modchoice].chapters
 
     while not chapt:
-        try:
-            chapt = int(input('\nFor which chapter are we testing? (1-' +\
-                    str(len(material)) + ') '))
-        except ValueError:
-            print('Input must be a number from 1 to ' + \
-                    str(len(material)) + '.')
-            chapt = None
-        if not chapt in range(1, len(material) + 1):
-            print('Chapter tests only go up to ' + str(len(material)) + '.')
-            chapt = None
+        chapt = get_input(list(map(str, range(1, len(material) + 1))),
+                '\nFor which chapter are we testing?')
     
-    questions = material[chapt-1]
+    questions = material[int(chapt)-1]
     
     total = len(questions)
     correct = 0
