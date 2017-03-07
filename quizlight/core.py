@@ -22,13 +22,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-
-# Multiple choice testing program
-# Runs multiple choice tests from modules
-# Loads list of chapters. Each chapter is a list of questions.
-# Each question is a list with these elements:
-# Question, Answer, Options, Reason
-
 import gettext
 gettext.install('quizlight')
 import quizlight.modules
@@ -39,7 +32,7 @@ def get_input(options=[], prompt='Press ENTER to continue.'):
     choice = None
     while not choice:
         try:
-            choice = input(prompt + ' (type q to quit) ')
+            choice = input(prompt + ' ' + str(options) + ' (type q to quit) ')
         except SyntaxError:
             if options == []:
                 pass
@@ -47,6 +40,7 @@ def get_input(options=[], prompt='Press ENTER to continue.'):
             if choice in options:
                 return choice
             elif choice == 'q':
+                choice = None
                 is_sure = input('Are you sure you want to quit? ')
                 if is_sure in ('Y', 'y', 'yes'):
                     exit('Thanks for playing. Goodbye.\n')
@@ -70,7 +64,7 @@ def ask_question(chapt, qnum, q, a, op, r=None):
 
     status = None
     printed_qnum = '======== Question # ' + str(qnum) + ' ========'
-    printed_qpr = 'Your answer ' + str(op) + '?'
+    printed_qpr = 'Your answer?'
     printed_q = '\n\n' + printed_qnum + '\n' + q + '\n' + printed_qpr
     
     x = get_input(op, printed_q)
@@ -97,12 +91,13 @@ def do_review(material, total, correct):
     print('Score:', str(int(correct / total * 100)) + '%')
     print('Missed questions:', int(total - correct), 'out of', total)
 
-    ouroptions = ['y', 'Y', 'yes', 'n', 'N', 'no', 'a', 'A', 'all']
-    mode = get_input(ouroptions, '\nReview questions? (yes/no/all)')
-    if mode in ['n', 'N', 'no']:
+    mode = get_input(['y', 'n'], '\nReview questions?')
+    if mode == 'n':
         exit('\nThanks for playing. Goodbye.\n')
-    elif mode in ['y', 'Y', 'yes']: review_all = 0
-    elif mode in ['a', 'A', 'all']: review_all = 1
+    else:
+        reviewtype = get_input(['a', 'i'], 'Review all questions or incorrect questions?')
+        if reviewtype == 'a': review_all = 1
+        else: review_all = 0
 
     anything_there = None
     for status, info in material:
@@ -128,6 +123,7 @@ def do_review(material, total, correct):
 def load_chapter():
     """Asks tutorial chapter questions for a given chapter."""
 
+    material = None
     chapt = None
     
     quizmodules = {}
@@ -142,8 +138,9 @@ def load_chapter():
     for m in quizmodules:
         print(m)
     print()
-    modchoice = get_input(quizmodules, 'Your choice?')
-    if modchoice in quizmodules: material = quizmodules[modchoice].chapters
+    modchoice = get_input(list(quizmodules.keys()), 'Your choice?')
+    if modchoice in quizmodules:
+        material = quizmodules[modchoice].chapters
 
     while not chapt:
         try:
@@ -177,7 +174,8 @@ def load_chapter():
     
     print('\nThanks for playing. Goodbye.\n')
 
-
+def main():
+    load_chapter()
 
 if __name__ == "__main__":
     load_chapter()
