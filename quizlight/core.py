@@ -139,7 +139,7 @@ def load_chapter():
     for m in quizmodules:
         print(m)
     print()
-    modchoice = str(get_input(list(quizmodules.keys()), 'Your choice?'))
+    modchoice = get_input(list(map(str, quizmodules.keys())), 'Your choice?')
     if modchoice in quizmodules:
         material = quizmodules[modchoice].chapters
 
