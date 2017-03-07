@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 #_MIT License
 #_
 #_Copyright (c) 2017 Dan Persons (dpersonsdev@gmail.com)
@@ -34,13 +36,14 @@ setup(name = 'quizlight', version = str(__version__),
         description = 'A simple, modular terminal-based quiz program',
         long_description = open('README.md').read(),
         author = 'Dan Persons', author_email = 'dpersonsdev@gmail.com',
-        packages = ['quizlight', 'quizlight.modules'],
+        # packages = ['quizlight', 'quizlight.modules'],
+        py_modules = ['quizlight', 'quizlight.modules'],
         entry_points = \
                 { 'console_scripts': [ 'quizlight = quizlight.core:main' ]},
         data_files = ourdata,
-        classifiers = ["Development Status :: 4 :: Beta",
+        classifiers = ["Development Status :: 3 :: Alpha",
             "Environment :: Console",
-            "Intended Audience :: Sysadmins",
+            "Intended Audience :: Education",
             "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)",
             "Natural Language :: English",
             "Operating System :: POSIX",
