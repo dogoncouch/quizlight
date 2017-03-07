@@ -25,8 +25,9 @@
 # Python 3.5
 
 chapters = [
-[
+
 # Chapter one:
+[
 ["""
 What is your name?
 
@@ -54,6 +55,8 @@ c. 7 mph
 d. I don't know that.
 """, 'b', ['a','b','c','d'], None]
 ],
+
+# Chapter two
 [
 ["""
 The python interpreter's primary prompt typically looks like:
@@ -133,6 +136,7 @@ c. Output to that file
 d. Run that file as a script
 """, 'd', ['a','b','c','d'], None]
 ],
+
 # Chapter three
 [
 ["""
@@ -372,16 +376,6 @@ d. 6
 ],
 
 #chapter 4:
-#if: 2 qs
-#for: 2
-#lists (review): 1
-#range: 1
-#break, continue: 2
-#pass: 1
-#functions: 2
-#more funcs: 7
-#style: 4+
-
 [
 ["""
 In an if statement, what does an elif section mean?
