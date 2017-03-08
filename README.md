@@ -53,9 +53,10 @@ Once your module is finished, you have to tell \fBquizlight\fP where to find it.
 
 As an example, let's say we have a module that tests on different varieties of apples. We'll call it apples.py and put it in the modules directory, and then we'll edit the __all__ list in __init__.py to contain our module:  
 
+    In __init__.py, add your module name to the __all__ variable:
     __all__ = ['python3', 'apples']
 
 # Sharing Your Module
-You are encouraged, but not required, to share your module. If you would like to make your module available to others, you can either get in touch with the author at the address below, or create an issue or pull request on github. The quizlight project's github page is:  
+You are encouraged, but not required, to share your module. If you would like to make your module available to others, you can either get in touch with the author at dpersonsdev@gmail.com, or create an issue or pull request on github. The quizlight project's github page is:  
 
     https://github.com/dogoncouch/quizlight
