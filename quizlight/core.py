@@ -33,7 +33,7 @@ def get_input(options=[], prompt='Press ENTER to continue.'):
     while not choice:
         try:
             choice = str(input(prompt + ' ' + str(options) + \
-                    ' (type q to quit) '))
+                    ' (q to quit) '))
         except SyntaxError:
             if options == []:
                 pass
