@@ -8,12 +8,15 @@ quizlight - Quiz module design
 .SH INTRODUCTION
 \fBquizlight\fP uses the standard python list layout. It is fairly simple; you don't need to learn python to use it. Lists are enclosed in brackets, and list elements are seperated by commas. Here is a list of numbers, as an example:
     [1, 4, 6, 7]
+
 Our lists are going to contain two types of things. The first will be strings (words, phrases, and paragraphs), which are enclosed either in single quotes:
     'The quick fox jumped over the lazy brown dog'
+
 or triple quotes for multi-line strings:
-    """Me: The quick brown fox jumped--
+    """Me: The quick fox jumped--
     My friend: Why are you always saying that?
     Me: I don't know, it's kind of a cool sentence."""
+
 The other element in our list will be other lists.
 
 .SH MODULE LAYOUT
@@ -23,7 +26,7 @@ The other element in our list will be other lists.
     3. A list containing all possible answers
     4. (optional) A reason for the answer
 
-The question should usually be a string literal (meaning enclosed in triple quotes), since it is usually more than one line. The correct answer should be a string, and the list of answers should be a list of strings. It should go without saying, but the answer list should contain the correct answer. The reason is entirely optional, and can be a string or a string literal.
+The question should usually be a string literal (meaning enclosed in triple quotes), since it is usually more than one line and it may contain quotes. The correct answer should be a string, and the list of answers should be a list of strings. It should go without saying, but the answer list should contain the correct answer. The reason is entirely optional, and can be a string or a string literal.
 
 The reason, if present, will be shown any time the question is answered incorrectly. If no reason is given, none will be shown and it will not cause a problem. You can have reasons for some of your questions and not others.
 
