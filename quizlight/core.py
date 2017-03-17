@@ -22,6 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import sys
 import gettext
 gettext.install('quizlight')
 import quizlight.modules
@@ -169,7 +170,11 @@ def load_chapter():
     print('\nThanks for playing. Goodbye.\n')
 
 def main():
-    load_chapter()
+    try: load_chapter()
+    except KeyboardInterrupt: sys.exit(1)
+    except EOFError: sys.exit(1)
 
 if __name__ == "__main__":
-    load_chapter()
+    try: load_chapter()
+    except KeyboardInterrupt: sys.exit(1)
+    except EOFError: sys.exit(1)
