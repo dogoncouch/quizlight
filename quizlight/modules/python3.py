@@ -30,8 +30,7 @@ chapters = [
 
 # Chapter one:
 [
-["""
-What is your name?
+["""What is your name?
 
 a. Lancelot
 b. Dave
@@ -39,8 +38,7 @@ c. Ed
 d. Fluffy
 """, 'a', ['a','b','c','d'], None],
     
-["""
-What is your quest?
+["""What is your quest?
 
 a. To get to Cleveland
 b. To buy some cheese
@@ -48,8 +46,7 @@ c. To seek the grail
 d. To destroy a ring
 """, 'c', ['a','b','c','d'], None],
 
-["""
-What is the air speed velocity of an unladen swallow?
+["""What is the air speed velocity of an unladen swallow?
 
 a. 178-200 mph
 b. 31-40 mph
@@ -60,8 +57,7 @@ d. I don't know that.
 
 # Chapter two
 [
-["""
-The python interpreter's primary prompt typically looks like:
+["""The python interpreter's primary prompt typically looks like:
 
 a. user@python:$
 b. $
@@ -69,8 +65,7 @@ c. ...
 d. >>>
 """, 'd', ['a','b','c','d'], None],
 
-["""
-An end-of-file (EOF) character (ctrl-D in unix, ctrl-Z in
+["""An end-of-file (EOF) character (ctrl-D in unix, ctrl-Z in
 windows) at the interpreter's primary prompt causes the
 interpreter to:
 
@@ -80,8 +75,7 @@ c. Exit with a zero status
 d. Switch to autopilot mode
 """, 'c', ['a','b','c','d'], None],
 
-["""
-To run a python module called module_example as a script, you
+["""To run a python module called module_example as a script, you
 would type:
 
 a. python3 -run module_example
@@ -90,8 +84,7 @@ c. python3 -m module_example
 d. python3 -script module_example
 """, 'c', ['a','b','c','d'], None],
 
-["""
-The first argument passed when starting the interpreter (e.g.
+["""The first argument passed when starting the interpreter (e.g.
 python -c 'print("Hello")') is stored in:
 
 a. sys.argv[0] in the sys module
@@ -100,8 +93,7 @@ c. sys.argv[1] in the sys module
 d. The castle aaargh
 """, 'a', ['a','b','c','d'], None],
 
-["""
-In the python interpreter, the secondary prompt (usually "...")
+["""In the python interpreter, the secondary prompt (usually "...")
 means:
 
 a. Something is wrong
@@ -110,8 +102,7 @@ c. The interpreter expects a continuation of the previous line
 d. The interpreter is pausing to let you catch up
 """, 'c', ['a','b','c','d'], None],
 
-["""
-By default, python assumes source files are encoded in:
+["""By default, python assumes source files are encoded in:
 
 a. UTF-8
 b. UTF-16
@@ -119,8 +110,7 @@ c. Esperanto
 d. The enigma cipher
 """, 'a', ['a','b','c','d'], None],
 
-["""
-Opening the python interpreter in "interactive mode" means:
+["""Opening the python interpreter in "interactive mode" means:
 
 a. You can type in commands at a prompt
 b. Python will run your program, but stop at intervals to
@@ -129,8 +119,7 @@ c. You want the interpreter to interact with your program
 d. You can only run scripts
 """, 'a', ['a','b','c','d'], None],
 
-["""
-When python is started with a filename as an argument, it will:
+["""When python is started with a filename as an argument, it will:
 
 a. Start in interactive mode with that file loaded as a module
 b. Check to see if that file is a python file
@@ -141,8 +130,7 @@ d. Run that file as a script
 
 # Chapter three
 [
-["""
-How do you group statements (e.g. when creating a loop) in Python?
+["""How do you group statements (e.g. when creating a loop) in Python?
 
 a. Using brackets: [ ]
 b. Using curly brackets: { }
@@ -150,8 +138,7 @@ c. Using parenthesis: ( )
 d. Using indentation
 """, 'd', ['a','b','c','d'], None],
 
-["""
-In the interpreter, how do you tell python you are finished
+["""In the interpreter, how do you tell python you are finished
 entering a multi-line command?
 
 a. Type EOF
@@ -160,8 +147,7 @@ c. By entering a blank line
 d. By typing ctrl-D (or ctrl-Z in Windows)
 """, 'c', ['a','b','c','d'], None],
 
-["""
-Which of the following is a comment in python?
+["""Which of the following is a comment in python?
 
 a. <!-- This is a comment -->
 b. # This is a comment
@@ -169,8 +155,7 @@ c. // This is a comment
 d. /* This is a comment
 """, 'b', ['a','b','c','d'], None],
 
-["""
-Suppose we enter the following into the interpreter:
+["""Suppose we enter the following into the interpreter:
 
 2 + (4 / 2)
 
@@ -182,8 +167,7 @@ c. string
 d. literal
 """, 'b', ['a','b','c','d'], None],
 
-["""
-Which equation will get the square of 2?
+["""Which equation will get the square of 2?
 
 a. 2 ** 2
 b. 2 ^2
@@ -191,8 +175,7 @@ c. 2 **
 d. sq(2)
 """, 'a', ['a','b','c','d'], None],
 
-["""
-Which operator returns the remainder of a division?
+["""Which operator returns the remainder of a division?
 
 a. r
 b. &
@@ -200,8 +183,7 @@ c. /r
 d. %
 """, 'd', ['a','b','c','d'], None],
 
-["""
-Which of these will output the number 23 with type int?
+["""Which of these will output the number 23 with type int?
 
 a. (23 // 5) * 5
 b. (23 / 5) * 5
@@ -209,8 +191,7 @@ c. (23 // 5) * 5 + (23 % 5)
 d. 23 / (5 * 5)
 """, 'c', ['a','b','c','d'], None],
 
-["""
-Which of these numbers would have type float?
+["""Which of these numbers would have type float?
 
 a. 4.725
 b. 5,000,561
@@ -218,8 +199,7 @@ c. 2
 d. '42'
 """, 'a', ['a','b','c','d'], None],
 
-["""
-How would you assign a value of 4 to the variable shrubbery?
+["""How would you assign a value of 4 to the variable shrubbery?
 
 a. shrubbery == 4
 b. set shrubbery == 4
@@ -235,8 +215,7 @@ c. The resulting number is type int
 d. The resulting number is type string
 """, 'b', ['a','b','c','d'], None],
 
-["""
-The last printed expression is automatically assigned to which
+["""The last printed expression is automatically assigned to which
 variable?
 
 a. last
@@ -245,8 +224,7 @@ c. L
 d. _
 """, 'd', ['a','b','c','d'], None],
 
-["""
-Suppose we type the following into the interpreter:
+["""Suppose we type the following into the interpreter:
 
 parrot_state, parrot_activity = 'dead', 'pushing up the daisies'
 print(parrot_state)
@@ -262,8 +240,7 @@ d. 'dead'
    'pushing up the daisies'
 """, 'b', ['a','b','c','d'], None],
 
-["""
-Which input would result in the following output?
+["""Which input would result in the following output?
 
 "You're using coconuts!"
 
@@ -273,8 +250,7 @@ c. print('"You\\'re using coconuts!"')
 d. print("You\\'re using coconuts!")
 """, 'c', ['a','b','c','d'], None],
 
-["""
-Suppose you want to create a string literal, which can span multiple
+["""Suppose you want to create a string literal, which can span multiple
 lines. Which of these will work?
 
 a. "What is your favorite color?\\n
@@ -287,8 +263,7 @@ d. ('What is your favorite color?
    Blue.')
 """, 'b', ['a','b','c','d'], None],
 
-["""
-If you have already assigned the variable occupation as follows:
+["""If you have already assigned the variable occupation as follows:
 
 occupation = 'lumberjack'
 
@@ -302,8 +277,7 @@ c. "I'm a " + occupation + " and I'm ok"
 d. "I'm a" + occupation + "and I'm ok"
 """, 'c', ['a','b','c','d'], None],
 
-["""
-If the variable cheese is set to 'Stilton', which of these will
+["""If the variable cheese is set to 'Stilton', which of these will
 output 'tilt'?
 
 a. cheese[1:5]
@@ -312,8 +286,7 @@ c. cheese[2:5]
 d. cheese[2-5]
 """, 'a', ['a','b','c','d'], None],
 
-["""
-If the variable weapon is set to 'grapefruit', what will be the
+["""If the variable weapon is set to 'grapefruit', what will be the
 output of weapon[-2]?
 
 a. 't'
@@ -322,8 +295,7 @@ c. 'it'
 d. 'i'
 """, 'd', ['a','b','c','d'], None],
 
-["""
-Assuming the following input:
+["""Assuming the following input:
 
 numbers = [1, 6, 3, 7, 6]
 numbers[1] = 9
@@ -337,8 +309,7 @@ c. [9, 1, 6, 3, 7, 6, 2]
 d. [9, 1, 6, 3, 7, 2]
 """, 'b', ['a','b','c','d'], None],
 
-["""
-Assuming the variable y is set as follows:
+["""Assuming the variable y is set as follows:
 
 y = [['x', 'y', 'z'], ['1', '2', '3']]
 
@@ -350,8 +321,7 @@ c. y[1][2]
 d. y[1][1]
 """, 'd', ['a','b','c','d'], None],
 
-["""
-Which of these will successfully start a while loop?
+["""Which of these will successfully start a while loop?
 
 a. while x = 2
 b. while x = 2:
@@ -359,8 +329,7 @@ c. while x == 2
 d. while x == 2:
 """, 'd', ['a','b','c','d'], None],
 
-["""
-Assuming the following input:
+["""Assuming the following input:
 
 x = 0
 test_word = 'Caerbannog'
@@ -379,8 +348,7 @@ d. 6
 
 #chapter 4:
 [
-["""
-In an if statement, what does an elif section mean?
+["""In an if statement, what does an elif section mean?
 
 a. It is not part of the if statement
 b. The elif conditions will be checked if the conditions for the if 
@@ -391,8 +359,7 @@ d. Python will disregard the original if statement; it is just there
    as a place holder.
 """, 'b', ['a','b','c','d'], None],
 
-["""
-If we input the following:
+["""If we input the following:
 
 actors = ['Cleese', 'Chapman', 'Idle']
 if len(actors) >= 4:
@@ -410,8 +377,7 @@ c. Just right.
 d. Nothing
 """, 'c', ['a','b','c','d'], None],
 
-["""
-If we input the following:
+["""If we input the following:
 
 arsenal = ['banana', 'grapefruit']
 for weapon in arsenal:
@@ -428,8 +394,7 @@ d. 6
    10
 """, 'd', ['a','b','c','d'], None],
 
-["""
-If we input the following:
+["""If we input the following:
 
 our_list = [[1, 2, 3], ['a', 'b', 'c']]
 for element in our_list:
@@ -444,8 +409,7 @@ c. 3
 d. 9
 """, 'a', ['a','b','c','d'], None],
 
-["""
-If shopping is a list, and x = 3, what is shopping[x]?
+["""If shopping is a list, and x = 3, what is shopping[x]?
 
 a. Three copies of the list shopping
 b. All of the items in the list shopping
@@ -453,8 +417,7 @@ c. The fourth item in the list shopping
 d. The third item in the list shopping
 """, 'c', ['a','b','c','d'], None],
 
-["""
-How many numbers are there in range(1, 10, 2)?
+["""How many numbers are there in range(1, 10, 2)?
 
 a. 4
 b. 5
@@ -462,8 +425,7 @@ c. 6
 d. 10
 """, 'b', ['a','b','c','d'], None],
 
-["""
-A break statement does which of the following?
+["""A break statement does which of the following?
 
 a. Breaks out of the smallest enclosing for or while loop
 b. Breaks out of all enclosing for and/or while loops
@@ -472,8 +434,7 @@ d. Goes straight to any else: statements in the for or while
    loop
 """, 'a', ['a','b','c','d'], None],
 
-["""
-If we input the following:
+["""If we input the following:
 
 for x in range(4):
     if x < 3:
@@ -488,8 +449,7 @@ c. 3
 d. 1
 """, 'd', ['a','b','c','d'], None],
 
-["""
-A pass statement does which of the following?
+["""A pass statement does which of the following?
 
 a. Passes by the next loop
 b. Breaks out of the current loop
@@ -497,8 +457,7 @@ c. It doesn't do anything
 d. Clears a variable
 """, 'c', ['a','b','c','d'], None],
 
-["""
-If a variable is created inside a function, where is it stored?
+["""If a variable is created inside a function, where is it stored?
 
 a. The global symbol table
 b. The function's local symbol table
@@ -506,8 +465,7 @@ c. The table of built-in names
 d. The docstring
 """, 'b', ['a','b','c','d'], None],
 
-["""
-If a variable is called inside of a function, where will python search
+["""If a variable is called inside of a function, where will python search
 for the variable first?
 
 a. The global symbol table
@@ -516,8 +474,7 @@ c. The docstring
 d. That function's local symbol table
 """, 'd', ['a','b','c','d'], None],
 
-["""
-If a function has no return statement, what value will it return?
+["""If a function has no return statement, what value will it return?
 
 a. None
 b. 0
@@ -525,8 +482,7 @@ c. 1
 d. Its own name
 """, 'a', ['a','b','c','d'], None],
 
-["""
-In the following:
+["""In the following:
 
 my_list.append('Hello')
 
@@ -538,8 +494,7 @@ c. An object
 d. A definition
 """, 'b', ['a','b','c','d'], None],
 
-["""
-In the following function:
+["""In the following function:
 
 def is_it_cheese(a, print_result=0):
     if a in ('red leicester', 'tilsit', 'caerphilly', 'bel paese'):
@@ -560,8 +515,7 @@ c. An object
 d. A type
 """, 'a', ['a','b','c','d'], None],
 
-["""
-If we input the following:
+["""If we input the following:
 
 our_list = [1]
 def our_function(input=our_list):
@@ -578,8 +532,7 @@ c. [1, 2]
 d. 1, 2
 """, 'b', ['a','b','c','d'], None],
 
-["""
-In a function, keyword arguments must be:
+["""In a function, keyword arguments must be:
 
 a. Before all positional arguments
 b. Between positional arguments
@@ -587,8 +540,7 @@ c. After all positional arguments
 d. Preceded by a number
 """, 'c', ['a','b','c','d'], None],
 
-["""
-Which one of these function calls contains a keyword argument?
+["""Which one of these function calls contains a keyword argument?
 
 a. f = our_function('word')
 b. f = our_function(20)
@@ -596,8 +548,7 @@ c. f = our_function('word', 20)
 d. f = our_function('word', number=20)
 """, 'd', ['a','b','c','d'], None],
 
-["""
-In a function that starts as follows:
+["""In a function that starts as follows:
 
 def my_function(arg, **stuff):
 

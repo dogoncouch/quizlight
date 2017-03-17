@@ -22,7 +22,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import sys
 import gettext
 gettext.install('quizlight')
 import quizlight.modules
@@ -67,11 +66,12 @@ def ask_question(chapt, qnum, q, a, op, r=None):
     status = None
     printed_qnum = '======== Question # ' + str(qnum) + ' ========'
     printed_qpr = 'Your answer?'
-    printed_q = '\n\n' + printed_qnum + '\n' + q + '\n' + printed_qpr
+    printed_q = '\n\n' + printed_qnum + '\n\n' + q + '\n' + printed_qpr
     
     x = get_input(op, prompt=printed_q, qopt=True)
     
-    if chapt == 1 and qnum == 3 and x == 'd':
+    if q.startswith('What is the air speed velocity of an unladen' \
+            ' swallow?'):
         exit('\n' * 5 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 5)
     if x == a:
         print('Correct!')
@@ -171,10 +171,10 @@ def load_chapter():
 
 def main():
     try: load_chapter()
-    except KeyboardInterrupt: sys.exit(1)
-    except EOFError: sys.exit(1)
+    except KeyboardInterrupt: exit(1)
+    except EOFError: exit(1)
 
 if __name__ == "__main__":
     try: load_chapter()
-    except KeyboardInterrupt: sys.exit(1)
-    except EOFError: sys.exit(1)
+    except KeyboardInterrupt: exit(1)
+    except EOFError: exit(1)
