@@ -2,11 +2,10 @@
 quizlight is a terminal-based quiz program. It is designed to be modular, and you can easily design your own tests..
 
 # Installing
-NOTE: The system-wide install doesn't work right now (version 0.2). If you want a working copy to use or design modules for, see the next section (Use Without Installing).  
 
     git clone https://github.com/dogoncouch/quizlight.git
     cd quizlight
-    sudo python setup.py install
+    sudo python3 setup.py install
 
 # Use Without Installing
     git clone https://github.com/dogoncouch/quizlight.git

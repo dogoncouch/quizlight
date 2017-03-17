@@ -26,7 +26,7 @@ import gettext
 gettext.install('quizlight')
 import quizlight.modules
 
-def get_input(options=[], prompt='Press ENTER to continue.'):
+def get_input(options=[], prompt='Press ENTER to continue.', qopt=False):
     """Ask for input, and check its sanity. (q to quit)"""
 
     choice = None
@@ -40,7 +40,7 @@ def get_input(options=[], prompt='Press ENTER to continue.'):
         if choice:
             if choice in options:
                 return choice
-            elif choice == 'q':
+            elif qopt == True and choice == 'q':
                 choice = None
                 is_sure = input('Are you sure you want to quit? ')
                 if is_sure in ('Y', 'y', 'yes'):
@@ -68,7 +68,7 @@ def ask_question(chapt, qnum, q, a, op, r=None):
     printed_qpr = 'Your answer?'
     printed_q = '\n\n' + printed_qnum + '\n' + q + '\n' + printed_qpr
     
-    x = get_input(op, printed_q)
+    x = get_input(op, prompt=printed_q, qopt=True)
     
     if chapt == 1 and qnum == 3 and x == 'd':
         exit('\n' * 5 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 5)
@@ -78,7 +78,7 @@ def ask_question(chapt, qnum, q, a, op, r=None):
     else:
         print('Incorrect! The answer was '+ a + '.')
         if r: print(r)
-    get_input()
+    get_input(qopt=True)
     
     info = [qnum, q, a, op, x, r]
     return status, info
@@ -92,11 +92,11 @@ def do_review(material, total, correct):
     print('Score:', str(int(correct / total * 100)) + '%')
     print('Missed questions:', int(total - correct), 'out of', total)
 
-    mode = get_input(['y', 'n'], '\nReview questions?')
+    mode = get_input(['y', 'n'], prompt='\nReview questions?', qopt=True)
     if mode == 'n':
         exit('\nThanks for playing. Goodbye.\n')
     else:
-        reviewtype = get_input(['a', 'i'], 'Review all questions or incorrect questions?')
+        reviewtype = get_input(['a', 'i'], prompt='Review all questions or incorrect questions?', qopt=True)
         if reviewtype == 'a': review_all = 1
         else: review_all = 0
 
@@ -112,12 +112,12 @@ def do_review(material, total, correct):
             print('Your answer:', rx)
             print('Correct answer:', ra)
             if rr: print(rr)
-            get_input()
+            get_input(qopt=True)
     
     if not anything_there:
         print('\nAll answers correct! No need for review.')
         print('Score: 100%')
-        get_input()
+        get_input(qopt=True)
 
 
 
@@ -139,13 +139,14 @@ def load_chapter():
     for m in quizmodules:
         print(m)
     print()
-    modchoice = get_input(list(map(str, quizmodules.keys())), 'Your choice?')
+    modchoice = get_input(list(map(str, quizmodules.keys())),
+            prompt='Your choice?', qopt=True)
     if modchoice in quizmodules:
         material = quizmodules[modchoice].chapters
 
     while not chapt:
         chapt = get_input(list(map(str, range(1, len(material) + 1))),
-                '\nFor which chapter are we testing?')
+                prompt='\nFor which chapter are we testing?', qopt=True)
     
     questions = material[int(chapt)-1]
     
@@ -155,7 +156,7 @@ def load_chapter():
     material = []
     
     print('\n\n' + str(total) + ' questions for this chapter.')
-    get_input([], 'Press ENTER to start.')
+    get_input([], prompt='Press ENTER to start.', qopt=True)
     
     for q, a, op, r in questions:
         qnum = qnum + 1
