@@ -502,7 +502,6 @@ def is_it_cheese(a, print_result=0):
             print('It's cheese!')
         return True
     else:
-<<<<<<< HEAD
         if print_result:
             print('It isn't cheese.')
         return False
