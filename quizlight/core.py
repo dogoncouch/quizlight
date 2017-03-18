@@ -71,8 +71,8 @@ def ask_question(chapt, qnum, q, a, op, r=None):
     x = get_input(op, prompt=printed_q, qopt=True)
     
     if q.startswith('What is the air speed velocity of an unladen' \
-            ' swallow?'):
-        exit('\n' * 5 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 5)
+            ' swallow?') and x == 'd':
+        exit('\n' * 10 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 10)
     if x == a:
         print('Correct!')
         status = 1
