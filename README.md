@@ -9,6 +9,8 @@ Requirements: python3-setuptools
     sudo python3 setup.py install
 
 # Use Without Installing
+To try without installing, or develop your own module, clone the git repository (requires git):
+
     git clone https://github.com/dogoncouch/quizlight.git
     cd quizlight
     ./quizlight.py
