@@ -169,12 +169,17 @@ def load_chapter():
     
     print('\nThanks for playing. Goodbye.\n')
 
-def main():
+def run_test():
     try: load_chapter()
-    except KeyboardInterrupt: exit(1)
-    except EOFError: exit(1)
+    except KeyboardInterrupt:
+        print('\nSorry, something went wrong.' + \
+                '\nThe developer responsible has been sacked')
+    except EOFError::
+        print('\nSorry, something went wrong.' + \
+                '\nThe developer responsible has been sacked')
+
+def main():
+    run_test()
 
 if __name__ == "__main__":
-    try: load_chapter()
-    except KeyboardInterrupt: exit(1)
-    except EOFError: exit(1)
+    run_test()
