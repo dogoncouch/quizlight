@@ -638,7 +638,83 @@ a. ingredients.count('spam')
 b. ingredients.list('spam')
 c. ingredients.number('spam')
 d. list.count(ingredients, 'spam')
-""", 'a', ['a', 'b', 'c', 'd'], None]
+""", 'a', ['a', 'b', 'c', 'd'], None],
+
+["""A "stack" is a list that is used to return results. In what order
+are the results returned?
+
+a. First in, first out
+b. Last in, first out
+c. Alphanumeric
+d. Random
+""", 'b', ['a', 'b', 'c', 'd'], None],
+
+["""A "queue" is another type of list that is used to return results. In
+what order does a queue return results?
+
+a. First in, first out
+b. Last in, first out
+c. Alphanumeric
+d. Random
+""", 'a', ['a', 'b', 'c', 'd'], None],
+
+["""If we create a queue as follows:
+
+from collections import deque
+ourqueue = deque(['Lancelot', 'Gallahad', 'Robin', 'Bedevere'])
+
+Which of the following will remove the first item and assign it
+to the variable guest?
+
+a. ourqueue.pop(guest)
+b. guest = ourqueue.pop()
+c. guest = ourqueue.popleft()
+d. guest = ourqueue.first()
+""", 'c', ['a', 'b', 'c', 'd'], None],
+
+["""If we have a list called ournumbers:
+[1, 54, -237, 12, -1, 5000]
+
+Which of these will make a list of all positive numbers in ournumbers?
+
+a. newnumbers = ournumbers.remove([x < 0])
+b. newnumbers = ournumbers.index(0:)
+c. newnumbers = [ x >=0 for x in ournumbers ]
+d. newnumbers = [ x for x in ournumbers if x >= 0 ]
+""", 'd', ['a', 'b', 'c', 'd'], None],
+
+["""If we have the following lists:
+
+horizontal = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+vertical = ['1', '2', '3', '4', '5', '6', '7', '8']
+
+How would we combine them to get a list of coordinate tuples for all 
+squares on a chess board?
+
+a. squares = [ (x, y) for x in horizontal for y in vertical ]
+b. squares = [ x, y for x in horizontal for y in vertical ]
+c. squares = [ (x, y) for x in horizontal and y in vertical ]
+d. squares = [ x, y for x in horizontal with y in vertical ]
+""", 'a', ['a', 'b', 'c', 'd'], None],
+
+["""If we have a list called lattitudes, and a list called longitudes,
+which of these would we combine them into a list of coordinate tuples?
+
+a. coordinates = [ (x, y) for x in lattitudes for y in longitudes ]
+b. coordinates = [ (x, y) for x in lattitudes and y in longitudes ]
+c. coordinates = \
+        [ (lattitudes[i], longitudes[i]) for i in range(len(lattitudes)) ]
+d. coordinates = [ (x, y) for x, y in lattitudes, longitudes ]
+""", 'c', ['a', 'b', 'c', 'd'], None],
+
+["""The del statement is useful for deleting variables, but also has
+which other use when it comes to lists?
+
+a. Removing list items by value
+b. Removing list items by index
+c. Removing list items on a last-in, first-out basis
+d. Removing list items on a first-in, first-out basis
+""", 'b', ['a', 'b', 'c', 'd'], None]
 
 ]
 

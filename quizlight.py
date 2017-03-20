@@ -24,4 +24,4 @@
 
 import quizlight.core
 
-quizlight.core.load_chapter()
+quizlight.core.run_test()
