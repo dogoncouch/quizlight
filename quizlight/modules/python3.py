@@ -558,5 +558,88 @@ b. All keyword arguments after arg
 c. All keyword arguments including arg, if arg is entered as arg=my_arg
 d. All arguments of any kind after arg
 """, 'b', ['a','b','c','d'], None]
+],
+
+#chapter 5
+[
+["""Which list method will add the number 5 to the end of list ourlist?
+
+a. ourlist.add(5)
+b. ourlist.extend(5)
+c. ourlist.end(5)
+d. ourlist.append(5)
+""", 'd', ['a', 'b', 'c', 'd'], None],
+
+["""If we input the following:
+
+a = [1]
+a.extend(range(1, 7))
+print(a)
+
+What will the output look like?
+
+a. [1, 2, 3, 4, 5, 6, 7]
+b. [1, 1, 2, 3, 4, 5, 6]
+c. [1, 1, 2, 3, 4, 5, 6, 7]
+d. [1, 2, 3, 4, 5, 6]
+""", 'b', ['a', 'b', 'c', 'd'], None],
+
+["""If our list ingredients looks like this:
+['spam', 'spam', 'spam', 'spam', 'spam', 'spam', 'spam']
+
+And we want to add 'spam' between 'spam' and 'spam', which of these
+will work?
+
+a. ingredients.pop(2, 'spam')
+b. ingredients.append(2, 'spam')
+c. ingredients.insert(2, 'spam')
+d. ingredients.new(2, 'spam')
+""", 'c', ['a', 'b', 'c', 'd'], None],
+
+["""If we want to remove the first item with value 'lupin' from a list
+called supplies, which of these will work?
+
+a. supplies.pop('lupin')
+b. supplies.clear('lupin')
+c. supplies.index('lupin')
+d. supplies.remove('lupin')
+""", 'd', ['a', 'b', 'c', 'd'], None],
+
+["""If we want to assign the last item in a list called example to the
+variable a, and remove it from the list, which of these would we use?
+
+a. example.remove(a)
+b. a = example.pop()
+c. example.pop(a)
+d. a = example.remove()
+""", 'b', ['a', 'b', 'c', 'd'], None],
+
+["""Which of these will reverse a list called ourlist in place?
+
+a. ourlist = ourlist.reverse()
+b. ourlist.index(reverse)
+c. ourlist.reverse()
+d. ourlist.reverse(True)
+""", 'c', ['a', 'b', 'c', 'd'], None],
+
+["""If we have a list called weapons, and we want to get the index number
+of the first item with value 'banana', which of these will work?
+
+a. weapons.number('banana')
+b. weapons.locate('banana')
+c. weapons.count('banana')
+d. weapons.index('banana')
+""", 'd', ['a', 'b', 'c', 'd'], None],
+
+["""Which method will return the number of items with value 'spam' in a
+list called ingredients?
+
+a. ingredients.count('spam')
+b. ingredients.list('spam')
+c. ingredients.number('spam')
+d. list.count(ingredients, 'spam')
+""", 'a', ['a', 'b', 'c', 'd'], None]
+
 ]
+
 ]
