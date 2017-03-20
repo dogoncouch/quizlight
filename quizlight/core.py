@@ -174,7 +174,7 @@ def run_test():
     except KeyboardInterrupt:
         print('\nSorry, something went wrong.' + \
                 '\nThe developer responsible has been sacked')
-    except EOFError::
+    except EOFError:
         print('\nSorry, something went wrong.' + \
                 '\nThe developer responsible has been sacked')
 
