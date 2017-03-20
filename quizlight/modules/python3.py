@@ -714,7 +714,38 @@ a. Removing list items by value
 b. Removing list items by index
 c. Removing list items on a last-in, first-out basis
 d. Removing list items on a first-in, first-out basis
-""", 'b', ['a', 'b', 'c', 'd'], None]
+""", 'b', ['a', 'b', 'c', 'd'], None],
+
+["""If we have a variable called stuff:
+
+stuff = 'example'
+
+Which of the following would create a tuple containing data on stuff?
+
+a. ourdata = len(stuff), type(stuff)
+b. ourdata = [ len(stuff), type(stuff) ]
+c. ourdata = { len(stuff), type(stuff) }
+d. ourdata = tuple(len(stuff), type(stuff))
+""", 'a', ['a', 'b', 'c', 'd'], None],
+
+["""Which of the following statements is true?
+
+a. Tuples are mutable; lists are immutable
+b. Tuples and lists are mutable
+c. Tuples are immutable; lists are mutable
+d. Tuples and lists are immutable
+""", 'c', ['a', 'b', 'c', 'd'], None],
+
+["""Which of the following will create an empty set?
+
+a. newset = set()
+b. newset = {}
+c. newset = ()
+d. newset = set{}
+""", 'a', ['a', 'b', 'c', 'd'], None]
+
+# 5.5 Dictionaries
+
 
 ]
 

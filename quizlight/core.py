@@ -172,10 +172,10 @@ def load_chapter():
 def run_test():
     try: load_chapter()
     except KeyboardInterrupt:
-        print('\nSorry, something went wrong.' + \
+        print('\n\nSorry, something went wrong.' + \
                 '\nThe developer responsible has been sacked')
     except EOFError:
-        print('\nSorry, something went wrong.' + \
+        print('\n\nSorry, something went wrong.' + \
                 '\nThe developer responsible has been sacked')
 
 def main():
