@@ -2,7 +2,7 @@
 quizlight is a terminal-based quiz program. It is designed to be modular, and you can easily design your own tests..
 
 # Installing
-Requirements: python3-setuptools
+Requirements: git, python3-setuptools
 
     git clone https://github.com/dogoncouch/quizlight.git
     cd quizlight
@@ -48,12 +48,12 @@ The question should usually be a string literal (meaning enclosed in triple quot
 The reason, if present, will be shown any time the question is answered incorrectly. If no reason is given, none will be shown and it will not cause a problem. You can have reasons for some of your questions and not others.
 
 # Example Module
-There is an simple example chapter that comes with quizlight to help understand the layout. If quizlight is installed on your system, it should be at /usr/share/doc/quizlight/examplemodule.py; if you are working in the repository, it will be at doc/examplemodule.py.
+There is an simple example chapter that comes with quizlight to help understand the layout. If quizlight is installed on your system, it should be at `` /usr/share/doc/quizlight/examplemodule.py ``; if you are working in the repository, it will be at `` doc/examplemodule.py `` .
 
 # Linking Your Module
-Once your module is finished, you have to tell quizlight where to find it. Your module should go in quizlight/modules with the example python3 module. It should have a short one-word name that describes the subject matter, and that name should be added (as a string) to the list in `` __init__.py `` in that directory.
+Once your module is finished, you have to tell quizlight where to find it. Your module should go in `` quizlight/modules `` with the example python3 module. It should have a short one-word name that describes the subject matter, and that name should be added (as a string) to the list in `` __init__.py `` in that directory.
 
-As an example, let's say we have a module that tests on different varieties of apples. We'll call it apples.py and put it in the quizlight/modules directory, and then we'll edit the `` __all__ `` list in `` quizlight/modules/__init__.py `` to contain our module:  
+As an example, let's say we have a module that tests on different varieties of apples. We'll call it apples.py and put it in the `` quizlight/modules `` directory, and then we'll edit the `` __all__ `` list in `` quizlight/modules/__init__.py `` to contain our module:  
 
     In __init__.py, add your module name to the __all__ variable:
     __all__ = ['python3', 'apples']
