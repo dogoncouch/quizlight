@@ -346,7 +346,7 @@ d. 6
 """, 'a', ['a','b','c','d'], None]
 ],
 
-#chapter 4:
+# Chapter 4:
 [
 ["""In an if statement, what does an elif section mean?
 
@@ -560,7 +560,7 @@ d. All arguments of any kind after arg
 """, 'b', ['a','b','c','d'], None]
 ],
 
-#chapter 5
+# Chapter 5
 [
 ["""Which list method will add the number 5 to the end of list ourlist?
 
