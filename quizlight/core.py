@@ -167,16 +167,20 @@ def load_chapter():
     
     do_review(material, total, correct)
     
-    print('\nThanks for playing. Goodbye.\n')
 
 def run_test():
-    try: load_chapter()
-    except KeyboardInterrupt:
-        print('\n\nSorry, something went wrong.' + \
-                '\nThe developer responsible has been sacked')
-    except EOFError:
-        print('\n\nSorry, something went wrong.' + \
-                '\nThe developer responsible has been sacked')
+    tryagain = 'y'
+    while tryagain == 'y':
+        try: load_chapter()
+        except KeyboardInterrupt:
+            print('\n\nSorry, something went wrong.' + \
+                    '\nThe developer responsible has been sacked')
+        except EOFError:
+            print('\n\nSorry, something went wrong.' + \
+                    '\nThe developer responsible has been sacked')
+        tryagain = get_input(opt=['y', 'n'], prompt='Try again?')
+    
+    print('\nThanks for playing. Goodbye.')
 
 def main():
     run_test()
