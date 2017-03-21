@@ -73,13 +73,14 @@ def ask_question(chapt, qnum, q, a, op, r=None):
     if q.startswith('What is the air speed velocity of an unladen' \
             ' swallow?') and x == 'd':
         exit('\n' * 10 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 10)
-    if x == a:
-        print('Correct!')
-        status = 1
-    else:
-        print('Incorrect! The answer was '+ a + '.')
-        if r: print(r)
-    get_input(qopt=True)
+    # Save this to the end:
+    # if x == a:
+    #     print('Correct!')
+    #     status = 1
+    # else:
+    #     print('Incorrect! The answer was '+ a + '.')
+    #     if r: print(r)
+    # get_input(qopt=True)
     
     info = [qnum, q, a, op, x, r]
     return status, info
@@ -94,31 +95,31 @@ def do_review(material, total, correct):
     print('Missed questions:', int(total - correct), 'out of', total)
 
     mode = get_input(['y', 'n'], prompt='\nReview questions?', qopt=True)
-    if mode == 'n':
-        exit('\nThanks for playing. Goodbye.\n')
-    else:
-        reviewtype = get_input(['a', 'i'], prompt='Review all questions or incorrect questions?', qopt=True)
+    if mode == 'y':
+        reviewtype = get_input(['a', 'i'],
+                prompt='Review all questions or incorrect questions?',
+                qopt=True)
         if reviewtype == 'a': review_all = 1
         else: review_all = 0
 
-    anything_there = None
-    for status, info in material:
-        if status and not review_all:
-            continue
-        else:
-            if not anything_there: anything_there = 1
-            rn, rq, ra, ro, rx, rr = info
-            print('\n\n======== Question #' + str(rn) + ' ========')
-            print(rq)
-            print('Your answer:', rx)
-            print('Correct answer:', ra)
-            if rr: print(rr)
+        anything_there = None
+        for status, info in material:
+            if status and not review_all:
+                continue
+            else:
+                if not anything_there: anything_there = 1
+                rn, rq, ra, ro, rx, rr = info
+                print('\n\n======== Question #' + str(rn) + ' ========')
+                print(rq)
+                print('Your answer:', rx)
+                print('Correct answer:', ra)
+                if rr: print(rr)
+                get_input(qopt=True)
+        
+        if not anything_there:
+            print('\nAll answers correct! No need for review.')
+            print('Score: 100%')
             get_input(qopt=True)
-    
-    if not anything_there:
-        print('\nAll answers correct! No need for review.')
-        print('Score: 100%')
-        get_input(qopt=True)
 
 
 
@@ -168,6 +169,7 @@ def load_chapter():
     do_review(material, total, correct)
     
 
+
 def run_test():
     tryagain = 'y'
     while tryagain == 'y':
@@ -181,6 +183,8 @@ def run_test():
         tryagain = get_input(opt=['y', 'n'], prompt='Try again?')
     
     print('\nThanks for playing. Goodbye.')
+
+
 
 def main():
     run_test()
