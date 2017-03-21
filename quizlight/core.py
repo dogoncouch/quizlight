@@ -73,10 +73,10 @@ def ask_question(chapt, qnum, q, a, op, r=None):
     if q.startswith('What is the air speed velocity of an unladen' \
             ' swallow?') and x == 'd':
         exit('\n' * 10 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 10)
+    if x == a:
     # Save this to the end:
-    # if x == a:
     #     print('Correct!')
-    #     status = 1
+        status = 1
     # else:
     #     print('Incorrect! The answer was '+ a + '.')
     #     if r: print(r)
@@ -137,7 +137,7 @@ def load_chapter():
                 # __import__('quizlight.modules.' + m, globals(), locals(),
                 # [quizlight])
 
-    print('Select a module:')
+    print('\nSelect a module:')
     for m in quizmodules:
         print(m)
     print()
@@ -180,8 +180,12 @@ def run_test():
         except EOFError:
             print('\n\nSorry, something went wrong.' + \
                     '\nThe developer responsible has been sacked')
-        tryagain = get_input(opt=['y', 'n'], prompt='Try again?')
-    
+        
+        # To Do: make this an option:
+        # tryagain = get_input(options=['y', 'n'],
+        #         prompt='\nTake another test?')
+        tryagain = 'n'
+
     print('\nThanks for playing. Goodbye.')
 
 
