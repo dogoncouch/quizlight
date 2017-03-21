@@ -20,9 +20,6 @@
 #_OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #_SOFTWARE.
 
-# Makefile for logdissect
-# https://github.com/dogoncouch/logdissect
-
 all: install clean
 
 install:
