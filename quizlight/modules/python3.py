@@ -742,6 +742,14 @@ a. newset = set()
 b. newset = {}
 c. newset = ()
 d. newset = set{}
+""", 'a', ['a', 'b', 'c', 'd'], None],
+
+["""Sets differ from lists in which of these ways?
+
+a. Sets cannot contain two of the same element
+b. Sets are immutable
+c. Sets are not iterable
+d. Sets are iterable, lists are not
 """, 'a', ['a', 'b', 'c', 'd'], None]
 
 # 5.5 Dictionaries

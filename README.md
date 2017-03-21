@@ -1,5 +1,5 @@
 # quizlight
-quizlight is a terminal-based quiz program. It is designed to be modular, and you can easily design your own tests..
+quizlight is a terminal-based quiz program. It is designed to be modular, and you can easily design your own modules. It comes with a python3 module, based on [The Python Tutorial](https://docs.python.org/3/tutorial/).
 
 # Installing
 Requirements: git, python3-setuptools
@@ -43,9 +43,9 @@ quizlight modules each define a single variable, called 'chapters'. chapters is 
     3. A list containing all possible answers
     4. (optional) A reason for the answer
 
-The question should usually be a string literal (meaning enclosed in triple quotes), since it is usually more than one line. The correct answer should be a string, and the list of answers should be a list of strings. It should go without saying, but the answer list should contain the correct answer. The reason is entirely optional, and can be a string or a string literal.
+The question should usually be a string literal (meaning enclosed in triple quotes), since it is usually more than one line and it may contain quotes. The correct answer should be a string, and the list of answers should be a list of strings. It should go without saying, but the answer list should contain the correct answer. The reason is entirely optional, and can be a string or a string literal.
 
-The reason, if present, will be shown any time the question is answered incorrectly. If no reason is given, none will be shown and it will not cause a problem. You can have reasons for some of your questions and not others.
+To leave the reason blank, set it to None (without quotes). If present, will be shown during the post-quiz review. If no reason is given, none will be shown and it will not cause a problem. You can have reasons for some of your questions and not others.
 
 # Example Module
 There is an simple example chapter that comes with quizlight to help understand the layout. If quizlight is installed on your system, it should be at `` /usr/share/doc/quizlight/examplemodule.py ``; if you are working in the repository, it will be at `` doc/examplemodule.py `` .
