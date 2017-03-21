@@ -750,10 +750,34 @@ a. Sets cannot contain two of the same element
 b. Sets are immutable
 c. Sets are not iterable
 d. Sets are iterable, lists are not
-""", 'a', ['a', 'b', 'c', 'd'], None]
+""", 'a', ['a', 'b', 'c', 'd'], None],
 
 # 5.5 Dictionaries
 
+["""Which of the following describes a dictionary?
+
+a. An unordered list containing words
+b. An ordered list containing words
+c. A list containing strings
+d. A list containing key: value pairs
+""", 'd', ['a', 'b', 'c', 'd'], None],
+
+["""Which of the following will return a list of keys from the
+dictionary called ourdict?
+
+a. ourdict.keys()
+b. list(ourdict.keys())
+c. list.keys(ourdict)
+d. ourdict.list(keys())
+""", 'b', ['a', 'b', 'c', 'd'], None],
+
+["""The dict() constructor is NOT capable of which of the following?
+
+a. Creating dictionaries from keyword arguments
+b. Creating dictionaries from lists of tuples
+c. Creating dictionaries from text files
+d. Creating dictionaries from key: value expressions
+""", 'c', ['a', 'b', 'c', 'd'], None]
 
 ]
 

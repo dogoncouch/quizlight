@@ -92,7 +92,8 @@ def do_review(material, total, correct):
 
     print('\n\n======== Finished! ========\n')
     print('Score:', str(int(correct / total * 100)) + '%')
-    print('Missed questions:', int(total - correct), 'out of', total)
+    print('Correct:', correct, 'out of', total)
+    print('Missed questions:', int(total - correct))
 
     mode = get_input(['y', 'n'], prompt='\nReview questions?', qopt=True)
     if mode == 'y':
