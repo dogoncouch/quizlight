@@ -2,7 +2,7 @@
 quizlight is a terminal-based quiz program. It is designed to be modular, and you can easily design your own modules. It comes with a python3 module, based on [The Python Tutorial](https://docs.python.org/3/tutorial/).
 
 # Installing
-Requirements: git, python3-setuptools
+Requirements: [lightcli](https://github.com/dogoncouch/lightcli), git, python3-setuptools
 
     git clone https://github.com/dogoncouch/quizlight.git
     cd quizlight
