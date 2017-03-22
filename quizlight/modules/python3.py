@@ -697,16 +697,6 @@ c. squares = [ (x, y) for x in horizontal and y in vertical ]
 d. squares = [ x, y for x in horizontal with y in vertical ]
 """, 'a', ['a', 'b', 'c', 'd'], None],
 
-["""If we have a list called lattitudes, and a list called longitudes,
-which of these would we combine them into a list of coordinate tuples?
-
-a. coordinates = [ (x, y) for x in lattitudes for y in longitudes ]
-b. coordinates = [ (x, y) for x in lattitudes and y in longitudes ]
-c. coordinates = \
-        [ (lattitudes[i], longitudes[i]) for i in range(len(lattitudes)) ]
-d. coordinates = [ (x, y) for x, y in lattitudes, longitudes ]
-""", 'c', ['a', 'b', 'c', 'd'], None],
-
 ["""The del statement is useful for deleting variables, but also has
 which other use when it comes to lists?
 
@@ -777,6 +767,53 @@ a. Creating dictionaries from keyword arguments
 b. Creating dictionaries from lists of tuples
 c. Creating dictionaries from text files
 d. Creating dictionaries from key: value expressions
+""", 'c', ['a', 'b', 'c', 'd'], None],
+
+["""If we have a list called lattitudes, and a list called longitudes,
+which of these would we combine them into a list of coordinate tuples?
+
+a. coordinates = [ (x, y) for x in lattitudes for y in longitudes ]
+b. coordinates = [ (x, y) for x in lattitudes and y in longitudes ]
+c. coordinates = [ (x, y) for x, y in zip(lattitudes, longitudes) ]
+d. coordinates = [ (x, y) for x, y in lattitudes, longitudes ]
+""", 'c', ['a', 'b', 'c', 'd'], None],
+
+["""In the following expression:
+
+if parrot == 'alive' or parrot == 'dead' and not parrot == 'perched':
+
+In what order will the conditions be evaluated?
+
+a. if (parrot == 'alive' or parrot == 'dead') and (not parrot == 'perched'):
+b. if parrot == 'alive' or (parrot == 'dead' and (not parrot == 'perched')):
+c. if parrot == ('alive' or parrot == 'dead') and not (parrot == 'perched'):
+d. if (parrot == 'alive' or parrot == 'dead') (and not parrot == 'perched'):
+""", 'b', ['a', 'b', 'c', 'd'], None],
+
+["""In the following if conditional:
+
+if 0 <= 1 and 2 <= 1 or 3 <= 2:
+    return 1
+else:
+    return 0
+
+What will happen?
+a. A ValueError will be raised
+b. A TypeError will be raised
+c. A 1 will be returned
+d. A 0 will be returned
+""", 'd', ['a', 'b', 'c', 'd'], None],
+
+["""In the following conditional:
+
+if 5 == 5.0: return True
+else: return False
+
+What will happen?
+a. A ValueError will be raised
+b. A TypeError will be raised
+c. True will be returned
+d. False will be returned
 """, 'c', ['a', 'b', 'c', 'd'], None]
 
 ]

@@ -146,10 +146,10 @@ def run_test():
         try: load_chapter()
         except KeyboardInterrupt:
             print('\n\nSorry, something went wrong.' + \
-                    '\nThe developer responsible has been sacked')
+                    '\nThe developer responsible has been sacked.')
         except EOFError:
             print('\n\nSorry, something went wrong.' + \
-                    '\nThe developer responsible has been sacked')
+                    '\nThe developer responsible has been sacked.')
         
         # To Do: make this an option:
         # tryagain = get_input(options=['y', 'n'],
