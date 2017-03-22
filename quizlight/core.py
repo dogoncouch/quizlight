@@ -25,38 +25,39 @@
 import gettext
 gettext.install('quizlight')
 import quizlight.modules
+from lightcli import get_input
 
-def get_input(options=[], prompt='Press ENTER to continue.', qopt=False):
-    """Ask for input, and check its sanity. (q to quit)"""
-
-    choice = None
-    while not choice:
-        try:
-            choice = str(input(prompt + ' ' + str(options) + \
-                    ' (q to quit) '))
-        except SyntaxError:
-            if options == []:
-                pass
-        if choice:
-            if choice in options:
-                return choice
-            elif qopt == True and choice == 'q':
-                choice = None
-                is_sure = input('Are you sure you want to quit? ')
-                if is_sure in ('Y', 'y', 'yes'):
-                    exit('Thanks for playing. Goodbye.\n')
-            elif options == []:
-                return 0
-            else:
-                print('Answer must be one of ' + str(options) +
-                        '. Your answer?')
-                if options:
-                    choice = None
-        elif options == []:
-            return 0
-        else:
-            print('Answer must be one of ' + str(options) + 
-                    '. Your answer?')
+# def get_input(options=[], prompt='Press ENTER to continue.', qopt=False):
+#     """Ask for input, and check its sanity. (q to quit)"""
+#
+#     choice = None
+#     while not choice:
+#         try:
+#             choice = str(input(prompt + ' ' + str(options) + \
+#                     ' (q to quit) '))
+#         except SyntaxError:
+#             if options == []:
+#                 pass
+#         if choice:
+#             if choice in options:
+#                 return choice
+#             elif qopt == True and choice == 'q':
+#                 choice = None
+#                 is_sure = input('Are you sure you want to quit? ')
+#                 if is_sure in ('Y', 'y', 'yes'):
+#                     exit('Thanks for playing. Goodbye.\n')
+#             elif options == []:
+#                 return 0
+#             else:
+#                 print('Answer must be one of ' + str(options) +
+#                         '. Your answer?')
+#                 if options:
+#                     choice = None
+#         elif options == []:
+#             return 0
+#         else:
+#             print('Answer must be one of ' + str(options) + 
+#                     '. Your answer?')
 
 
 
@@ -187,7 +188,7 @@ def run_test():
         #         prompt='\nTake another test?')
         tryagain = 'n'
 
-    print('\nThanks for playing. Goodbye.')
+    print('\nThanks for playing. Goodbye.\n')
 
 
 
