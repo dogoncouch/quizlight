@@ -79,7 +79,7 @@ def do_review(material, total, correct):
             else:
                 if not anything_there: anything_there = 1
                 rn, rq, ra, ro, rx, rr = info
-                print('\n\n======== Question #' + str(rn) + ' ========')
+                print('\n\n======== Question #' + str(rn) + ' ========\n')
                 print(rq)
                 print('Your answer:', rx)
                 print('Correct answer:', ra)
