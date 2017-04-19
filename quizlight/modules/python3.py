@@ -770,7 +770,7 @@ d. Creating dictionaries from key: value expressions
 """, 'c', ['a', 'b', 'c', 'd'], None],
 
 ["""If we have a list called lattitudes, and a list called longitudes,
-which of these would we combine them into a list of coordinate tuples?
+which of these would combine them into a list of coordinate tuples?
 
 a. coordinates = [ (x, y) for x in lattitudes for y in longitudes ]
 b. coordinates = [ (x, y) for x in lattitudes and y in longitudes ]
