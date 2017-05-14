@@ -24,137 +24,21 @@
 
 import gettext
 gettext.install('quizlight')
-import quizlight.modules
+import quizlight.quiz
+import quizlight.review
 from lightcli import get_input
 
 
-
-def ask_question(chapt, qnum, q, a, op, r=None):
-    """Asks a multiple choice question"""
-
-    status = None
-    printed_qnum = '======== Question # ' + str(qnum) + ' ========'
-    printed_qpr = 'Your answer?'
-    printed_q = '\n\n' + printed_qnum + '\n\n' + q + '\n' + printed_qpr
-    
-    x = get_input(op, prompt=printed_q, qopt=True)
-    
-    if q.startswith('What is the air speed velocity of an unladen' \
-            ' swallow?') and x == 'd':
-        exit('\n' * 10 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 10)
-    if x == a:
-    # Save this to the end:
-    #     print('Correct!')
-        status = 1
-    # else:
-    #     print('Incorrect! The answer was '+ a + '.')
-    #     if r: print(r)
-    # get_input(qopt=True)
-    
-    info = [qnum, q, a, op, x, r]
-    return status, info
-
-
-def do_review(material, total, correct):
-    """Reviews test questions"""
-
-    print('\n\n======== Finished! ========\n')
-    print('Score:', str(int(correct / total * 100)) + '%')
-    print('Correct:', correct, 'out of', total)
-    print('Missed questions:', int(total - correct))
-
-    mode = get_input(['y', 'n'], prompt='\nReview questions?', qopt=True)
-    if mode == 'y':
-        reviewtype = get_input(['a', 'i'],
-                prompt='Review all questions or incorrect questions?',
-                qopt=True)
-        if reviewtype == 'a': review_all = 1
-        else: review_all = 0
-
-        anything_there = None
-        for status, info in material:
-            if status and not review_all:
-                continue
-            else:
-                if not anything_there: anything_there = 1
-                rn, rq, ra, ro, rx, rr = info
-                print('\n\n======== Question #' + str(rn) + ' ========\n')
-                print(rq)
-                print('Your answer:', rx)
-                print('Correct answer:', ra)
-                if rr: print(rr)
-                get_input(qopt=True)
-        
-        if not anything_there:
-            print('\nAll answers correct! No need for review.')
-            print('Score: 100%')
-            get_input(qopt=True)
-
-
-def load_quiz():
-    """Load a quiz module"""
-
-    material = None
-    
-    quizmodules = {}
-    for m in sorted(quizlight.modules.__all__):
-        quizmodules[m] = \
-                __import__('quizlight.modules.' + m, globals(), locals(),
-                [quizlight])
-                # __import__('quizlight.modules.' + m, globals(), locals(),
-                # [quizlight])
-
-    print('\nSelect a module:')
-    for m in quizmodules:
-        print(m)
-    print()
-    modchoice = get_input(list(map(str, quizmodules.keys())),
-            prompt='Your choice?', qopt=True)
-    if modchoice in quizmodules:
-        material = quizmodules[modchoice].chapters
-    
-    return material
-
-
-def load_chapter(material):
-    """Ask questions for a given chapter"""
-    chapt = None
-    while not chapt:
-        chapt = get_input(list(map(str, range(1, len(material) + 1))),
-                prompt='\nFor which chapter are we testing?', qopt=True)
-    
-    questions = material[int(chapt)-1]
-
-    return chapt, questions
-
-
-def quiz_chapter(chapt, questions):
-    
-    total = len(questions)
-    correct = 0
-    qnum = 0
-    material = []
-    
-    print('\n\n' + str(total) + ' questions for this chapter.')
-    get_input([], prompt='Press ENTER to start.', qopt=True)
-    
-    for q, a, op, r in questions:
-        qnum = qnum + 1
-        status, info = ask_question(chapt, qnum, q, a, op, r)
-        if status: correct = correct + 1
-        material.append([status, info])
-    
-    return material, total, correct
-    
 
 def run_test():
     tryagain = 'y'
     while tryagain == 'y':
         try:
-            quiz = load_quiz()
-            chapt, questions = load_chapter(quiz)
-            material, total, correct = quiz_chapter(chapt, questions)
-            do_review(material, total, correct)
+            quiz = quizlight.quiz.load_quiz()
+            chapt, questions = quizlight.quiz.load_chapter(quiz)
+            material, total, correct = \
+                    quizlight.quiz.quiz_chapter(chapt, questions)
+            quizlight.review.do_review(material, total, correct)
         except KeyboardInterrupt:
             print('\n\nSorry, something went wrong.' + \
                     '\nThe developer responsible has been sacked.')
