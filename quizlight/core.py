@@ -30,7 +30,7 @@ from lightcli import get_input
 
 
 def ask_question(chapt, qnum, q, a, op, r=None):
-    """Asks a multiple choice question."""
+    """Asks a multiple choice question"""
 
     status = None
     printed_qnum = '======== Question # ' + str(qnum) + ' ========'
@@ -55,9 +55,8 @@ def ask_question(chapt, qnum, q, a, op, r=None):
     return status, info
 
 
-
 def do_review(material, total, correct):
-    """Reviews test questions."""
+    """Reviews test questions"""
 
     print('\n\n======== Finished! ========\n')
     print('Score:', str(int(correct / total * 100)) + '%')
@@ -92,12 +91,10 @@ def do_review(material, total, correct):
             get_input(qopt=True)
 
 
-
-def load_chapter():
-    """Asks tutorial chapter questions for a given chapter."""
+def load_quiz():
+    """Load a quiz module"""
 
     material = None
-    chapt = None
     
     quizmodules = {}
     for m in sorted(quizlight.modules.__all__):
@@ -115,12 +112,23 @@ def load_chapter():
             prompt='Your choice?', qopt=True)
     if modchoice in quizmodules:
         material = quizmodules[modchoice].chapters
+    
+    return material
 
+
+def load_chapter(material):
+    """Ask questions for a given chapter"""
+    chapt = None
     while not chapt:
         chapt = get_input(list(map(str, range(1, len(material) + 1))),
                 prompt='\nFor which chapter are we testing?', qopt=True)
     
     questions = material[int(chapt)-1]
+
+    return chapt, questions
+
+
+def quiz_chapter(chapt, questions):
     
     total = len(questions)
     correct = 0
@@ -136,20 +144,23 @@ def load_chapter():
         if status: correct = correct + 1
         material.append([status, info])
     
-    do_review(material, total, correct)
+    return material, total, correct
     
-
 
 def run_test():
     tryagain = 'y'
     while tryagain == 'y':
-        try: load_chapter()
+        try:
+            quiz = load_quiz()
+            chapt, questions = load_chapter(quiz)
+            material, total, correct = quiz_chapter(chapt, questions)
+            do_review(material, total, correct)
         except KeyboardInterrupt:
             print('\n\nSorry, something went wrong.' + \
                     '\nThe developer responsible has been sacked.')
-        except EOFError:
-            print('\n\nSorry, something went wrong.' + \
-                    '\nThe developer responsible has been sacked.')
+        # except EOFError:
+        #     print('\n\nSorry, something went wrong.' + \
+        #             '\nThe developer responsible has been sacked.')
         
         # To Do: make this an option:
         # tryagain = get_input(options=['y', 'n'],
