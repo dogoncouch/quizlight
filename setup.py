@@ -30,14 +30,15 @@ from quizlight import __version__
 ourdata = [(join(prefix, 'share/man/man1'), ['doc/quizlight.1']),
         (join(prefix, 'share/man/man5'), ['doc/quizlight.5']),
         (join(prefix, 'share/doc/quizlight'), ['README.md', 'LICENSE',
-            'doc/examplemodule.py'])]
+            'doc/examplemodule.py']),
+        (join(prefix, 'share/doc/quizlight/modules'), ['modules/python3'])]
 
 setup(name = 'quizlight', version = str(__version__),
         description = 'A simple, modular terminal-based quiz program',
         long_description = open('README.md').read(),
         author = 'Dan Persons', author_email = 'dpersonsdev@gmail.com',
-        packages = ['quizlight', 'quizlight.modules'],
-        # py_modules = ['quizlight', 'quizlight.modules'],
+        url = 'https://github.com/dogoncouch/quizlight',
+        packages = ['quizlight', 'quizlight.quiz', 'quizlight.edit'],
         entry_points = \
                 { 'console_scripts': [ 'quizlight = quizlight.core:main' ]},
         data_files = ourdata,
