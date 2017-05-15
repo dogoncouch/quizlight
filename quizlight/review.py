@@ -23,7 +23,7 @@
 #_SOFTWARE.
 
 
-from lightcli import get_input
+import lightcli
 
 
 
@@ -35,9 +35,9 @@ def do_review(material, total, correct):
     print('Correct:', correct, 'out of', total)
     print('Missed questions:', int(total - correct))
 
-    mode = get_input(['y', 'n'], prompt='\nReview questions?', qopt=True)
+    mode = lightcli.choice_input(['y', 'n'], prompt='\nReview questions?', qopt=True)
     if mode == 'y':
-        reviewtype = get_input(['a', 'i'],
+        reviewtype = lightcli.choice_input(['a', 'i'],
                 prompt='Review all questions or incorrect questions?',
                 qopt=True)
         if reviewtype == 'a': review_all = 1
@@ -55,9 +55,9 @@ def do_review(material, total, correct):
                 print('Your answer:', rx)
                 print('Correct answer:', ra)
                 if rr: print(rr)
-                get_input(qopt=True)
+                lightcli.choice_input(qopt=True)
         
         if not anything_there:
             print('\nAll answers correct! No need for review.')
             print('Score: 100%')
-            get_input(qopt=True)
+            lightcli.choice_input(qopt=True)

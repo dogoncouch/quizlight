@@ -39,13 +39,13 @@ def create_question():
         # Set the question prompt:
         finished = False
         while not finished:
-            print('Enter your question')
+            print('\n\nEnter your question')
             question = lightcli.long_input()
 
             print('\n\n==== Your Question: ====\n')
             print(question)
 
-            choice = lightcli.get_input(options=['k', 'r'],
+            choice = lightcli.choice_input(options=['k', 'r'],
                     prompt = 'Keep/Rewrite', qopt=True)
             if choice == 'k':
                 finished = True
@@ -57,9 +57,9 @@ def create_question():
             aoptions = lightcli.list_input()
 
             print('\n\n==== Your Options: ====\n')
-            print(options)
+            print(aoptions)
             
-            choice = lightcli.get_input(options=['k', 'r'],
+            choice = lightcli.choice_input(options=['k', 'r'],
                     prompt = 'Keep/Rewrite', qopt=True)
             if choice == 'k':
                 finished = True
@@ -68,13 +68,13 @@ def create_question():
         finished = False
         while not finished:
             print('Enter the correct answer (must be in the answer list)')
-            answer = lightcli.get_input(prompt='Correct answer:',
+            answer = lightcli.choice_input(prompt='Correct answer:',
                     options=aoptions, qopt=True)
             
             print('\n\n==== Your Answer: ====\n')
-            print(options)
+            print(answer)
             
-            choice = lightcli.get_input(options=['k', 'r'],
+            choice = lightcli.choice_input(options=['k', 'r'],
                     prompt = 'Keep/Rewrite', qopt=True)
             if choice == 'k':
                 finished = True
@@ -90,7 +90,7 @@ def create_question():
             print('\n\n==== Your Reason: ====\n')
             print(reason)
             
-            choice = lightcli.get_input(options=['k', 'r'],
+            choice = lightcli.choice_input(options=['k', 'r'],
                     prompt = 'Keep/Rewrite', qopt=True)
             if choice == 'k':
                 finished = True
@@ -98,21 +98,20 @@ def create_question():
         # Verify everything:
         print('\n\n==== Your Question: ====\n')
         print(question)
-        x = lightcli.get_input(showopts=False, )
+        x = lightcli.choice_input(showopts=False, )
 
         print('\n\n==== Your Options: ====\n')
-        print(options)
-        x = lightcli.get_input(showopts=False, )
+        print(aoptions)
 
         print('\n\n==== Your Answer: ====\n')
-        print(options)
-        x = lightcli.get_input(showopts=False, )
+        print(answer)
+        x = lightcli.choice_input(showopts=False, )
         
         print('\n\n==== Your Reason: ====\n')
         print(reason)
-        x = lightcli.get_input(showopts=False, )
+        x = lightcli.choice_input(showopts=False, )
         
-        choice = lightcli.get_input(options=['k', 'r', 'a'],
+        choice = lightcli.choice_input(options=['k', 'r', 'a'],
                 prompt = 'Keep/Rewrite/Abort', qopt=True)
         if choice == 'k':
             allfinished = True
@@ -126,22 +125,27 @@ def create_question():
 def create_chapter(filename):
     """Create a chapter of questions"""
     
-    questions = []
+    chapter = []
 
     finished = False
     while not finished:
         question = create_question()
         if question: chapter.append(question)
         
-        choice = lightcli.get_input(prompt='Add another question?',
+        choice = lightcli.choice_input(prompt='\n\nAdd another question?',
                 options=['y', 'n'], qopt=True)
 
         if choice == 'n': finished = True
 
     
     with open(filename, 'r') as f:
-        module = json.loads(f.read())
+        try:
+            module = json.loads(f.read())
+        except json.decoder.JSONDecodeError:
+            module = []
+        # module = json.loads(f.read())
     
+    # print module
     module.append(chapter)
     modulejson = json.dumps(module, indent=2)
 
@@ -156,26 +160,23 @@ def extend_chapter(filename, cnum):
     with open(filename, 'r') as f:
         module = json.loads(f.read())
         
-    questions = module[cnum-1]
+    chapter = module[int(cnum)-1]
 
     finished = False
     while not finished:
         question = create_question()
         if question: chapter.append(question)
         
-        choice = lightcli.get_input(prompt='Add another question?',
+        choice = lightcli.choice_input(prompt='Add another question?',
                 options=['y', 'n'], qopt=True)
 
         if choice == 'n': finished = True
 
-    
-    module[cnum-1] = chapter)
+    module[int(cnum)-1] = chapter
     modulejson = json.dumps(module, indent=2)
 
     with open(filename, 'w') as f:
         f.write(modulejson)
-
-
 
 
 def load_module():
@@ -183,37 +184,61 @@ def load_module():
     
     fileok = False
     while not fileok:
-        filename = str(input('File name?'))
+        filename = str(input('File name? '))
+        if not filename.endswith('.json'):
+            filename = filename + '.json'
         if os.path.isfile(filename):
-            choice = lightcli.get_input(prompt=filename + \
+            choice = lightcli.choice_input(prompt=filename + \
                     ' already exists. Edit it?',
                     options=['y', 'n'], qopt=True)
             if choice == 'y':
-                fileok = True
                 try:
                     nowtime = time.time()
-                    with open(filename, 'w') as f:
+                    with open(filename, 'a') as f:
                         os.utime(filename, (nowtime, nowtime))
+                    fileok = True
                 except IOError:
                     print('Write permission denied on ' + filename + \
                             '. Try again.')
-
-                    fileok = False
-
-            with open(filename, 'r') as f:
-                module = json.loads(f.read))
             
-            print(filename + ' contains ' + str(len(module) + 1) + \
-                    'chapters')
-            choice = lightcli.get_input(prompt='Add new chapter, ' +\
-                    'or Extend existing?', options=['a', 'e'], qopt=True)
-        
-            if choice == 'e':
-                clist = [str(x + 1) for x in range(0, len(module))]
-                cnum = lightcli.get_input(prompt='Extend which chapter?',
-                        options=clist, qopt=True)
-            else:
-                cnum = None
+                with open(filename, 'r') as f:
+                    try:
+                        module = json.loads(f.read())
+                    except json.decoder.JSONDecodeError:
+                        module = []
+                
+                if module != []:
+                    print('\n' + filename + ' contains ' + \
+                            str(len(module)) + ' chapter(s)')
+                    choice = lightcli.choice_input(
+                            prompt='Add new chapter, or Extend existing?',
+                            options=['a', 'e'], qopt=True)
+                
+                    if choice == 'e':
+                        clist = [str(x + 1) for x in range(0, len(module))]
+                        cnum = lightcli.choice_input(prompt='Extend ' + \
+                                'which chapter?',
+                                options=clist, qopt=True)
+                    else:
+                        cnum = None
+                else:
+                    cnum = None
+
+        else:
+            fprompt = filename + ' does not exist. Create it?'
+            choice = lightcli.choice_input(prompt=fprompt,
+                    options=['y', 'n'], qopt=True)
+            if choice == 'y':
+                try:
+                    newlist = []
+                    newmodule = json.dumps(newlist)
+                    with open(filename, 'w') as f:
+                        f.write(newmodule)
+                    fileok = True
+                    cnum = None
+                except IOError:
+                    print('Write permission denied on ' + filename + \
+                            '. Try again.')
 
     return filename, cnum
 
@@ -230,7 +255,7 @@ def run_edit(args):
         else:
             extend_chapter(filename, cnum)
 
-        choice = lightcli.get_input('Add/edit more?',
-                options=['y', 'n'], qopt=True])
+        choice = lightcli.choice_input(prompt='Add/edit more?',
+                options=['y', 'n'], qopt=True)
         if choice == 'n': keepcreating = False
 

@@ -40,50 +40,24 @@ def ask_question(chapt, qnum, question, answer, options, reason,
     printed_q = '\n\n' + printed_qnum + '\n\n' + question + '\n' + \
             printed_qpr
     
-    x = lightcli.get_input(options, prompt=printed_q, qopt=True)
+    x = lightcli.choice_input(options, prompt=printed_q, qopt=True)
     
     if question.startswith('What is the air speed velocity of an ' + \
             'unladen swallow?') and x == 'd':
         exit('\n' * 10 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 10)
     if x == answer:
-    # Save this to the end:
         if learning:
             print('Correct!')
-            get_input(showopts=False, qopt=True)
+            lightcli.choice_input(showopts=False, qopt=True)
         status = 1
     else:
         if learning:
             print('Incorrect! The answer was '+ a + '.')
             if r: print(r)
-            get_input(showopts=False, qopt=True)
+            lightcli.choice_input(showopts=False, qopt=True)
     
     info = [qnum, question, answer, options, x, reason]
     return status, info
-
-
-def load_quiz():
-    """Load a quiz module"""
-
-    material = None
-    
-    quizmodules = {}
-    for m in sorted(quizlight.modules.__all__):
-        quizmodules[m] = \
-                __import__('quizlight.modules.' + m, globals(), locals(),
-                [quizlight])
-                # __import__('quizlight.modules.' + m, globals(), locals(),
-                # [quizlight])
-
-    print('\nSelect a module:')
-    for m in quizmodules:
-        print(m)
-    print()
-    modchoice = lightcli.get_input(list(map(str, quizmodules.keys())),
-            prompt='Your choice?', showopts=False, qopt=True)
-    if modchoice in quizmodules:
-        material = quizmodules[modchoice].chapters
-    
-    return material
 
 
 def quiz_chapter(chapt, questions, args):
@@ -94,7 +68,7 @@ def quiz_chapter(chapt, questions, args):
     material = []
     
     print('\n\n' + str(total) + ' questions for this chapter.')
-    lightcli.get_input(showopts=False, qopt=True)
+    lightcli.choice_input(showopts=False, qopt=True)
     
     for q, a, op, r in questions:
         qnum = qnum + 1
@@ -110,7 +84,7 @@ def load_chapter(material):
     """Ask questions for a given chapter"""
     chapt = None
     while not chapt:
-        chapt = lightcli.get_input(list(map(str, range(1, len(material) + 1))),
+        chapt = lightcli.choice_input(list(map(str, range(1, len(material) + 1))),
                 prompt='\nFor which chapter are we testing?', qopt=True)
     
     questions = material[int(chapt)-1]
@@ -138,7 +112,7 @@ def choose_module(directory, fileext='.json'):
         modprompt = modprompt + m + '\n'
     modprompt = modprompt + '\nYour choice?'
 
-    choice = lightcli.get_input(prompt=modprompt, options=list(choices.keys()),
+    choice = lightcli.choice_input(prompt=modprompt, options=list(choices.keys()),
             showopts=False, qopt=True)
     
     with open(choices[choice]) as f:

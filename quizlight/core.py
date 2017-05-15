@@ -81,12 +81,15 @@ def select_mode():
 
     print('\n')
     try:
-        mode = lightcli.get_input(prompt='Select a mode (Quiz/Edit)',
-                options=['q', 'e'], qopt=True)
-        if mode == 'e':
-            edit_quiz(args)
-        else:
+        if args.file:
             run_quiz(args)
+        else:
+            mode = lightcli.choice_input(prompt='Select a mode (Test/Edit)',
+                    options=['t', 'e'], qopt=True)
+            if mode == 'e':
+                edit_quiz(args)
+            else:
+                run_quiz(args)
     
     except KeyboardInterrupt:
         print('\n\nSorry, something went wrong.' + \
