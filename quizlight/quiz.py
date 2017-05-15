@@ -39,8 +39,8 @@ def ask_question(chapt, qnum, question, answer, options, reason):
     
     x = get_input(options, prompt=printed_q, qopt=True)
     
-    if q.startswith('What is the air speed velocity of an unladen' \
-            ' swallow?') and x == 'd':
+    if question.startswith('What is the air speed velocity of an ' + \
+            'unladen swallow?') and x == 'd':
         exit('\n' * 10 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 10)
     if x == answer:
     # Save this to the end:

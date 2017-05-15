@@ -1,2 +1,2 @@
-__version__ = '0.2-alpha'
+__version__ = '0.3-alpha'
 __all__ = 'core'
