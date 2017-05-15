@@ -24,4 +24,4 @@
 
 import quizlight.core
 
-quizlight.core.run_test()
+quizlight.core.select_mode()

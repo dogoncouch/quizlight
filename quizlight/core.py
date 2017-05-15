@@ -22,41 +22,65 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import sys
 import gettext
 gettext.install('quizlight')
 import quizlight.quiz
 import quizlight.review
-from lightcli import get_input
+import lightcli
 
 
 
-def run_test():
-    tryagain = 'y'
-    while tryagain == 'y':
-        try:
-            quiz = quizlight.quiz.load_quiz()
-            chapt, questions = quizlight.quiz.load_chapter(quiz)
-            material, total, correct = \
-                    quizlight.quiz.quiz_chapter(chapt, questions)
-            quizlight.review.do_review(material, total, correct)
-        except KeyboardInterrupt:
-            print('\n\nSorry, something went wrong.' + \
-                    '\nThe developer responsible has been sacked.')
-        # except EOFError:
-        #     print('\n\nSorry, something went wrong.' + \
-        #             '\nThe developer responsible has been sacked.')
-        
-        # To Do: make this an option:
-        # tryagain = get_input(options=['y', 'n'],
-        #         prompt='\nTake another test?')
-        tryagain = 'n'
+def run_quiz():
+    """Manage quiz taking"""
 
+    try:
+        # To Do: Move some of this to a function in quiz.py:
+        quiz = quizlight.quiz.load_quiz()
+        chapt, questions = quizlight.quiz.load_chapter(quiz)
+        material, total, correct = \
+                quizlight.quiz.quiz_chapter(chapt, questions)
+        quizlight.review.do_review(material, total, correct)
+    except KeyboardInterrupt:
+        print('\n\nSorry, something went wrong.' + \
+                '\nThe developer responsible has been sacked.')
+    
     print('\nThanks for playing. Goodbye.\n')
+
+    # To Do: if args.exit: sys.exit(0)
+
+
+
+def create_quiz():
+    """Manage quiz creation"""
+
+    try:
+        quizlight.create.run_create()
+    except KeyboardInterrupt:
+        print('\n\nSorry, something went wrong.' + \
+                '\nThe developer responsible has been sacked.')
+
+
+
+def select_mode():
+    """Select a mode: quiz/create"""
+
+    try:
+        mode = lightcli.get_input(prompt='Select a mode (Quiz/Create)',
+                options=['q', 'c'], qopt=True)
+        if mode == 'c':
+            create_quiz()
+        else:
+            run_quiz()
+    except KeyboardInterrupt:
+        print('\n\nSorry, something went wrong.' + \
+                '\nThe developer responsible has been sacked.')
+
 
 
 
 def main():
-    run_test()
+    select_mode()
 
 if __name__ == "__main__":
-    run_test()
+    select_mode()
