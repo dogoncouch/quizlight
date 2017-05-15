@@ -143,7 +143,7 @@ def create_chapter(filename):
         module = json.loads(f.read())
     
     module.append(chapter)
-    modulejson = json.dumps(module)
+    modulejson = json.dumps(module, indent=2)
 
     with open(filename, 'w') as f:
         f.write(modulejson)
@@ -170,7 +170,7 @@ def extend_chapter(filename, cnum):
 
     
     module[cnum-1] = chapter)
-    modulejson = json.dumps(module)
+    modulejson = json.dumps(module, indent=2)
 
     with open(filename, 'w') as f:
         f.write(modulejson)
@@ -219,7 +219,7 @@ def load_module():
 
 
 
-def run_create():
+def run_create(args):
     """Start quiz module creation or editing"""
 
     keepcreating = True

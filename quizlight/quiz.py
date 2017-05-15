@@ -23,12 +23,15 @@
 #_SOFTWARE.
 
 
-import quizlight.modules
-from lightcli import get_input
+import os
+import json
+import lightcli
+import quizlight.review
 
 
 
-def ask_question(chapt, qnum, question, answer, options, reason):
+def ask_question(chapt, qnum, question, answer, options, reason, 
+        learning=False):
     """Asks a multiple choice question"""
 
     status = None
@@ -37,19 +40,22 @@ def ask_question(chapt, qnum, question, answer, options, reason):
     printed_q = '\n\n' + printed_qnum + '\n\n' + question + '\n' + \
             printed_qpr
     
-    x = get_input(options, prompt=printed_q, qopt=True)
+    x = lightcli.get_input(options, prompt=printed_q, qopt=True)
     
     if question.startswith('What is the air speed velocity of an ' + \
             'unladen swallow?') and x == 'd':
         exit('\n' * 10 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 10)
     if x == answer:
     # Save this to the end:
-    #     print('Correct!')
+        if learning:
+            print('Correct!')
+            get_input(qopt=True)
         status = 1
-    # else:
-    #     print('Incorrect! The answer was '+ a + '.')
-    #     if r: print(r)
-    # get_input(qopt=True)
+    else:
+        if learning:
+            print('Incorrect! The answer was '+ a + '.')
+            if r: print(r)
+            get_input(qopt=True)
     
     info = [qnum, question, answer, options, x, reason]
     return status, info
@@ -72,7 +78,7 @@ def load_quiz():
     for m in quizmodules:
         print(m)
     print()
-    modchoice = get_input(list(map(str, quizmodules.keys())),
+    modchoice = lightcli.get_input(list(map(str, quizmodules.keys())),
             prompt='Your choice?', qopt=True)
     if modchoice in quizmodules:
         material = quizmodules[modchoice].chapters
@@ -80,19 +86,7 @@ def load_quiz():
     return material
 
 
-def load_chapter(material):
-    """Ask questions for a given chapter"""
-    chapt = None
-    while not chapt:
-        chapt = get_input(list(map(str, range(1, len(material) + 1))),
-                prompt='\nFor which chapter are we testing?', qopt=True)
-    
-    questions = material[int(chapt)-1]
-
-    return chapt, questions
-
-
-def quiz_chapter(chapt, questions):
+def quiz_chapter(chapt, questions, args):
     
     total = len(questions)
     correct = 0
@@ -100,12 +94,76 @@ def quiz_chapter(chapt, questions):
     material = []
     
     print('\n\n' + str(total) + ' questions for this chapter.')
-    get_input([], prompt='Press ENTER to start.', qopt=True)
+    lightcli.get_input(qopt=True)
     
     for q, a, op, r in questions:
         qnum = qnum + 1
-        status, info = ask_question(chapt, qnum, q, a, op, r)
+        status, info = ask_question(chapt, qnum, q, a, op, r,
+                learning=args.learning)
         if status: correct = correct + 1
         material.append([status, info])
     
+    return material, total, correct
+
+
+def load_chapter(material):
+    """Ask questions for a given chapter"""
+    chapt = None
+    while not chapt:
+        chapt = lightcli.get_input(list(map(str, range(1, len(material) + 1))),
+                prompt='\nFor which chapter are we testing?', qopt=True)
+    
+    questions = material[int(chapt)-1]
+
+    return chapt, questions
+
+
+def choose_module(directory, fileext='.json'):
+    """Choose a quiz module"""
+    
+    print(directory)
+    if not os.path.isdir(directory):
+        directory = '.'
+
+    jsonfiles = [f for f in os.listdir(directory) \
+            if os.path.isfile(directory + '/' + f) and f.endswith(fileext)]
+    
+
+    choices = {}
+    for f in jsonfiles:
+        shortname = f[:-5]
+        choices[shortname] = directory + '/' + f
+
+    modprompt = '==== Modules: ====\n'
+    for m in choices:
+        modprompt = modprompt + m + '\n'
+    modprompt = modprompt + '\nYour choice?'
+
+    choice = lightcli.get_input(prompt=modprompt, options=list(choices.keys()),
+            qopt=True)
+    
+    with open(choices[choice]) as f:
+        material = json.loads(f.read())
+
+    return choices[choice]
+
+
+def load_module(filename):
+    """Read a module from a specified file"""
+    if os.path.isfile(filename):
+        with open(filename, 'r') as f:
+            material = json.loads(f.read())
+
+    return material
+
+
+def run_quiz(args):
+    if not args.file: module = choose_module(args.directory)
+    else: module = args.file
+    material = load_module(module)
+
+    chapt, questions = load_chapter(material)
+    material, total, correct = \
+            quiz_chapter(chapt, questions, args)
+
     return material, total, correct

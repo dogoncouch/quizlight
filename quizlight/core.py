@@ -22,40 +22,51 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import sys
-import gettext
-gettext.install('quizlight')
+
+from argparse import ArgumentParser
 import quizlight.quiz
 import quizlight.review
+from quizlight import __version__
 import lightcli
 
 
 
-def run_quiz():
+def parse_args():
+    """set config options"""
+    parser = ArgumentParser()
+
+    parser.add_argument('--version', action='version',
+            version='%(prog)s ' + str(__version__))
+    parser.add_argument('-d', action='store',
+            default='/usr/share/doc/lightcli/modules', dest='directory',
+            help=('set the module import directory'))
+    parser.add_argument('--learn', action='store_true', dest='learning',
+            help=('turn on learning mode (immediate answer feedback)'))
+    parser.add_argument('file', nargs='?',
+            help=('set the module import file'))
+
+    args = parser.parse_args()
+
+    return args
+
+
+def run_quiz(args):
     """Manage quiz taking"""
 
     try:
-        # To Do: Move some of this to a function in quiz.py:
-        quiz = quizlight.quiz.load_quiz()
-        chapt, questions = quizlight.quiz.load_chapter(quiz)
-        material, total, correct = \
-                quizlight.quiz.quiz_chapter(chapt, questions)
+        material, total, correct = quizlight.quiz.run_quiz(args)
         quizlight.review.do_review(material, total, correct)
     except KeyboardInterrupt:
         print('\n\nSorry, something went wrong.' + \
                 '\nThe developer responsible has been sacked.')
     
-    print('\nThanks for playing. Goodbye.\n')
-
-    # To Do: if args.exit: sys.exit(0)
 
 
-
-def create_quiz():
+def create_quiz(args):
     """Manage quiz creation"""
 
     try:
-        quizlight.create.run_create()
+        quizlight.create.run_create(args)
     except KeyboardInterrupt:
         print('\n\nSorry, something went wrong.' + \
                 '\nThe developer responsible has been sacked.')
@@ -64,14 +75,18 @@ def create_quiz():
 
 def select_mode():
     """Select a mode: quiz/create"""
+    
+    args = parse_args()
 
+    print('\n')
     try:
         mode = lightcli.get_input(prompt='Select a mode (Quiz/Create)',
                 options=['q', 'c'], qopt=True)
         if mode == 'c':
-            create_quiz()
+            create_quiz(args)
         else:
-            run_quiz()
+            run_quiz(args)
+    
     except KeyboardInterrupt:
         print('\n\nSorry, something went wrong.' + \
                 '\nThe developer responsible has been sacked.')
