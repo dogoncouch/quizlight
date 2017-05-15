@@ -26,6 +26,7 @@
 from argparse import ArgumentParser
 import quizlight.quiz
 import quizlight.review
+import quizlight.edit
 from quizlight import __version__
 import lightcli
 
@@ -62,11 +63,11 @@ def run_quiz(args):
     
 
 
-def create_quiz(args):
+def edit_quiz(args):
     """Manage quiz creation"""
 
     try:
-        quizlight.create.run_create(args)
+        quizlight.edit.run_edit(args)
     except KeyboardInterrupt:
         print('\n\nSorry, something went wrong.' + \
                 '\nThe developer responsible has been sacked.')
@@ -74,16 +75,16 @@ def create_quiz(args):
 
 
 def select_mode():
-    """Select a mode: quiz/create"""
+    """Select a mode: quiz/edit"""
     
     args = parse_args()
 
     print('\n')
     try:
-        mode = lightcli.get_input(prompt='Select a mode (Quiz/Create)',
-                options=['q', 'c'], qopt=True)
-        if mode == 'c':
-            create_quiz(args)
+        mode = lightcli.get_input(prompt='Select a mode (Quiz/Edit)',
+                options=['q', 'e'], qopt=True)
+        if mode == 'e':
+            edit_quiz(args)
         else:
             run_quiz(args)
     

@@ -31,7 +31,7 @@ import json
 
 
 def create_question():
-    """Create a question"""
+    """Edit a question"""
     
     allfinished = False
     while not allfinished:
@@ -206,7 +206,7 @@ def load_module():
             print(filename + ' contains ' + str(len(module) + 1) + \
                     'chapters')
             choice = lightcli.get_input(prompt='Add new chapter, ' +\
-                    'or Edit existing?', options=['a', 'e'], qopt=True)
+                    'or Extend existing?', options=['a', 'e'], qopt=True)
         
             if choice == 'e':
                 clist = [str(x + 1) for x in range(0, len(module))]
@@ -219,7 +219,7 @@ def load_module():
 
 
 
-def run_create(args):
+def run_edit(args):
     """Start quiz module creation or editing"""
 
     keepcreating = True
