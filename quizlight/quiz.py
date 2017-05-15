@@ -49,13 +49,13 @@ def ask_question(chapt, qnum, question, answer, options, reason,
     # Save this to the end:
         if learning:
             print('Correct!')
-            get_input(qopt=True)
+            get_input(showopts=False, qopt=True)
         status = 1
     else:
         if learning:
             print('Incorrect! The answer was '+ a + '.')
             if r: print(r)
-            get_input(qopt=True)
+            get_input(showopts=False, qopt=True)
     
     info = [qnum, question, answer, options, x, reason]
     return status, info
@@ -79,7 +79,7 @@ def load_quiz():
         print(m)
     print()
     modchoice = lightcli.get_input(list(map(str, quizmodules.keys())),
-            prompt='Your choice?', qopt=True)
+            prompt='Your choice?', showopts=False, qopt=True)
     if modchoice in quizmodules:
         material = quizmodules[modchoice].chapters
     
@@ -94,7 +94,7 @@ def quiz_chapter(chapt, questions, args):
     material = []
     
     print('\n\n' + str(total) + ' questions for this chapter.')
-    lightcli.get_input(qopt=True)
+    lightcli.get_input(showopts=False, qopt=True)
     
     for q, a, op, r in questions:
         qnum = qnum + 1
@@ -121,7 +121,6 @@ def load_chapter(material):
 def choose_module(directory, fileext='.json'):
     """Choose a quiz module"""
     
-    print(directory)
     if not os.path.isdir(directory):
         directory = '.'
 
@@ -140,7 +139,7 @@ def choose_module(directory, fileext='.json'):
     modprompt = modprompt + '\nYour choice?'
 
     choice = lightcli.get_input(prompt=modprompt, options=list(choices.keys()),
-            qopt=True)
+            showopts=False, qopt=True)
     
     with open(choices[choice]) as f:
         material = json.loads(f.read())

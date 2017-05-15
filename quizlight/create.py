@@ -54,7 +54,7 @@ def create_question():
         finished = False
         while not finished:
             print('Enter the list of answers (short name, e.g. a, b, c, d)')
-            options = lightcli.list_input()
+            aoptions = lightcli.list_input()
 
             print('\n\n==== Your Options: ====\n')
             print(options)
@@ -69,7 +69,7 @@ def create_question():
         while not finished:
             print('Enter the correct answer (must be in the answer list)')
             answer = lightcli.get_input(prompt='Correct answer:',
-                    options=options, qopt=True)
+                    options=aoptions, qopt=True)
             
             print('\n\n==== Your Answer: ====\n')
             print(options)
@@ -98,19 +98,19 @@ def create_question():
         # Verify everything:
         print('\n\n==== Your Question: ====\n')
         print(question)
-        x = lightcli.get_input()
+        x = lightcli.get_input(showopts=False, )
 
         print('\n\n==== Your Options: ====\n')
         print(options)
-        x = lightcli.get_input()
+        x = lightcli.get_input(showopts=False, )
 
         print('\n\n==== Your Answer: ====\n')
         print(options)
-        x = lightcli.get_input()
+        x = lightcli.get_input(showopts=False, )
         
         print('\n\n==== Your Reason: ====\n')
         print(reason)
-        x = lightcli.get_input()
+        x = lightcli.get_input(showopts=False, )
         
         choice = lightcli.get_input(options=['k', 'r', 'a'],
                 prompt = 'Keep/Rewrite/Abort', qopt=True)
@@ -119,7 +119,7 @@ def create_question():
         elif choice == 'a':
             return None
 
-    return [question, answer, options, reason]
+    return [question, answer, aoptions, reason]
 
 
 
