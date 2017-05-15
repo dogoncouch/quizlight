@@ -28,20 +28,21 @@ from lightcli import get_input
 
 
 
-def ask_question(chapt, qnum, q, a, op, r=None):
+def ask_question(chapt, qnum, question, answer, options, reason):
     """Asks a multiple choice question"""
 
     status = None
     printed_qnum = '======== Question # ' + str(qnum) + ' ========'
     printed_qpr = 'Your answer?'
-    printed_q = '\n\n' + printed_qnum + '\n\n' + q + '\n' + printed_qpr
+    printed_q = '\n\n' + printed_qnum + '\n\n' + question + '\n' + \
+            printed_qpr
     
-    x = get_input(op, prompt=printed_q, qopt=True)
+    x = get_input(options, prompt=printed_q, qopt=True)
     
     if q.startswith('What is the air speed velocity of an unladen' \
             ' swallow?') and x == 'd':
         exit('\n' * 10 + 'A'+ 'aaaaaaaaaa' * 20 + 'hh.' + '\n' * 10)
-    if x == a:
+    if x == answer:
     # Save this to the end:
     #     print('Correct!')
         status = 1
@@ -50,7 +51,7 @@ def ask_question(chapt, qnum, q, a, op, r=None):
     #     if r: print(r)
     # get_input(qopt=True)
     
-    info = [qnum, q, a, op, x, r]
+    info = [qnum, question, answer, options, x, reason]
     return status, info
 
 
