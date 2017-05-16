@@ -25,6 +25,9 @@ quizlight has a menu driven interface, based on the lightcli library. There are 
 ### Test mode
 Test mode is for taking tests. Tests in `/usr/share/doc/quizlight/modules` are loaded by default, unless another directory or file is specified.
 
+#### Learning mode
+Learning mode turns on immediate answer feedback. After each question is answered, the correct answer is shown, along with the reason (if present).
+
 ### Edit mode
 Edit mode is for creating and extending tests. It has to create new tests, add new chapters to existing tests, and extend existing chapters. Chapters and questions can not be deleted within quizlight.
 
