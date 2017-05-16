@@ -55,6 +55,9 @@ setup(name = 'quizlight', version = str(__version__),
         long_description = open('README.md').read(),
         author = 'Dan Persons', author_email = 'dpersonsdev@gmail.com',
         url = 'https://github.com/dogoncouch/quizlight',
+        keywords = ['educational', 'education', 'quiz', 'testing',
+            'education-game', 'education-materials', 'python3',
+            'terminal-based', 'console-application', 'learning']
         packages = ['quizlight', 'quizlight.quiz', 'quizlight.edit'],
         entry_points = \
                 { 'console_scripts': [ 'quizlight = quizlight.core:main' ]},
