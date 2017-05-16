@@ -34,6 +34,7 @@ import lightcli
 
 def parse_args():
     """set config options"""
+    
     parser = ArgumentParser()
 
     parser.add_argument('--version', action='version',
@@ -54,26 +55,17 @@ def parse_args():
 def run_quiz(args):
     """Manage quiz taking"""
 
-    try:
-        filename = quizlight.review.check_save()
-        material, total, correct = quizlight.quiz.run_quiz(args)
-        quizlight.review.do_review(material, total, correct,
-                resultfile=filename)
-    except KeyboardInterrupt:
-        print('\n\nSorry, something went wrong.' + \
-                '\nThe developer responsible has been sacked.')
+    filename = quizlight.review.check_save()
+    material, total, correct = quizlight.quiz.run_quiz(args)
+    quizlight.review.do_review(material, total, correct,
+            resultfile=filename)
     
 
 
 def edit_quiz(args):
     """Manage quiz creation"""
 
-    try:
-        quizlight.edit.run_edit(args)
-    except KeyboardInterrupt:
-        print('\n\nSorry, something went wrong.' + \
-                '\nThe developer responsible has been sacked.')
-
+    quizlight.edit.run_edit(args)
 
 
 def select_mode():
@@ -94,6 +86,9 @@ def select_mode():
                 run_quiz(args)
     
     except KeyboardInterrupt:
+        print('\n\nSorry, something went wrong.' + \
+                '\nThe developer responsible has been sacked.')
+    except EOFError:
         print('\n\nSorry, something went wrong.' + \
                 '\nThe developer responsible has been sacked.')
 
