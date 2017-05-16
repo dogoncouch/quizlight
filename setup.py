@@ -21,6 +21,25 @@
 #_LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 #_OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #_SOFTWARE.
+"""
+Quizlight
+---------
+
+Quizlight is simple terminal-based program for test taking and creation. It is written in Python 3. It comes with a Python 3 test module, based on `The Python Tutorial <https://docs.python.org/3/tutorial/>`_ .
+
+Usage
+`````
+
+Quizlight has a menu driven interface, based on the lightcli library. There are two modes: test mode, and edit mode. Test mode is for taking tests. Edit mode is for creating and editing tests.
+
+Links
+`````
+
+* `Documentation <https://github.com/dogoncouch/quizlight/blob/master/README.md>`_
+* `Changelog <https://github.com/dogoncouch/quizlight/blob/master/CHANGELOG.md>`_
+
+"""
+
 
 from setuptools import setup
 from os.path import join
