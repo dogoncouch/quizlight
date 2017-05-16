@@ -28,9 +28,7 @@ from sys import prefix
 from quizlight import __version__
 
 ourdata = [(join(prefix, 'share/man/man1'), ['doc/quizlight.1']),
-        (join(prefix, 'share/man/man5'), ['doc/quizlight.5']),
-        (join(prefix, 'share/doc/quizlight'), ['README.md', 'LICENSE',
-            'doc/examplemodule.py']),
+        (join(prefix, 'share/doc/quizlight'), ['README.md', 'LICENSE']),
         (join(prefix, 'share/doc/quizlight/modules'), ['modules/python3'])]
 
 setup(name = 'quizlight', version = str(__version__),
