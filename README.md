@@ -4,6 +4,7 @@ quizlight is a simple, modular, terminal-based program for test taking and creat
 ## Installing
 See the latest instructions on the [releases page](https://github.com/dogoncouch/quizlight/releases)
 
+
 # Usage
 
 ## Options
@@ -22,10 +23,11 @@ optional arguments:
 quizlight has a menu driven interface, based on the lightcli library. There are two modes: test mode, and edit mode.
 
 ### Test mode
-Test mode is for taking tests. Tests in `/usr/share/doc/quizlight/modules` are loaded by default, unless another directory or a specific file is specified.
+Test mode is for taking tests. Tests in `/usr/share/doc/quizlight/modules` are loaded by default, unless another directory or file is specified.
 
 ### Edit mode
 Edit mode is for creating and extending tests. It has to create new tests, add new chapters to existing tests, and extend existing chapters. Chapters and questions can not be deleted within quizlight.
+
 
 # Modules
 
@@ -60,6 +62,7 @@ Here is an example:
 
 4. Enter a reason
     According to a british documentary about King Arthur, there are very dangerous rabbits out there.
+
 
 # Copyright
 MIT License
