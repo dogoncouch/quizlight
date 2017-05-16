@@ -10,14 +10,28 @@ quizlight - A simple and modular terminal-based quiz program.
     
     https://docs.python.org/3/tutorial/
 
+.SH OPTIONS
+    usage: quizlight [-h] [--version] [-d DIRECTORY] [--learn] [file]
+    
+    positional arguments:
+      file          set the module import file
+    
+    optional arguments:
+      -h, --help    show this help message and exit
+      --version     show program's version number and exit
+      -d DIRECTORY  set the module import directory
+      --learn       turn on learning mode (immediate answer feedback)
+
 .SH EXAMPLES
     quizlight
+    quizlight -d .
+    quizlight modules/python3.json
 
-.SH SEE ALSO
-    quizlight(5)
+.SH NOTES
+quizlight has a menu driven interface, based on the lightcli library. There are two modes: \fBtest mode\fR, and \fBedit mode\fR. \fBTest mode\fR is for taking tests; \fBedit mode\fR is for creating and extending tests. Edit mode can create new tests, add chapters to existing tests, and extend existing chapters. Questions can not be deleted in edit mode.
 
 .SH FILES
-    /usr/share/doc/quizlight/examplemodule.py
+    /usr/share/doc/quizlight/modules/*
     /usr/share/doc/quizlight/README.md
     /usr/share/doc/quizlight/LICENSE
 
