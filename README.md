@@ -53,6 +53,7 @@ Creating and editing modules is easy; edit mode functions as an interactive guid
 Here is an example:
 
 1. Enter a question prompt
+    
     Which animal is the most dangerous?
 
     a. Fox
@@ -61,15 +62,18 @@ Here is an example:
     d. Elephant
 
 2. Enter a list of answers
+    
     a
     b
     c
     d
 
 3. Set the correct answer
+    
     b
 
 4. Enter a reason
+    
     According to a british documentary about King Arthur, there are very dangerous rabbits out there.
 
 ## Contributing
