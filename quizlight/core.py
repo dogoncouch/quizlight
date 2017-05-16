@@ -55,8 +55,10 @@ def run_quiz(args):
     """Manage quiz taking"""
 
     try:
+        filename = quizlight.review.check_save()
         material, total, correct = quizlight.quiz.run_quiz(args)
-        quizlight.review.do_review(material, total, correct)
+        quizlight.review.do_review(material, total, correct,
+                resultfile=filename)
     except KeyboardInterrupt:
         print('\n\nSorry, something went wrong.' + \
                 '\nThe developer responsible has been sacked.')

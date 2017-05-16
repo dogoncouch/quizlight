@@ -23,19 +23,48 @@
 #_SOFTWARE.
 
 
+from datetime import datetime
 import lightcli
 
 
 
-def do_review(material, total, correct):
+def check_save():
+    """Check if results will be saved"""
+
+    choice = lightcli.choice_input(['y', 'n'], prompt='\nSave results?',
+            qopt=True)
+
+    if choice == 'y':
+        filename = lightcli.outfile_input(extension='.txt', quitopt=True)
+        return filename
+    else:
+        return None
+
+
+
+def do_review(material, total, correct, resultfile=None):
     """Reviews test questions"""
 
-    print('\n\n======== Finished! ========\n')
-    print('Score:', str(int(correct / total * 100)) + '%')
-    print('Correct:', correct, 'out of', total)
-    print('Missed questions:', int(total - correct))
+    resultstring = '\n\n======== Finished! ========\n\n' + \
+    'Score: ' + str(int(correct / total * 100)) + '%\n' + \
+    'Correct: ' + str(correct) + ' out of ' + str(total) + '\n' + \
+    'Missed questions: ' + str(int(total - correct))
+    
+    if resultfile:
+        tstamp = 'Completed ' + datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        with open(resultfile, 'w') as f:
+            f.write('\n' + tstamp + resultstring + '\n')
 
-    mode = lightcli.choice_input(['y', 'n'], prompt='\nReview questions?', qopt=True)
+    print(resultstring)
+    
+    
+    # print('\n\n======== Finished! ========\n')
+    # print('Score:', str(int(correct / total * 100)) + '%')
+    # print('Correct:', correct, 'out of', total)
+    # print('Missed questions:', int(total - correct))
+
+    mode = lightcli.choice_input(['y', 'n'], prompt='\nReview questions?',
+            qopt=True)
     if mode == 'y':
         reviewtype = lightcli.choice_input(['a', 'i'],
                 prompt='Review all questions or incorrect questions?',
