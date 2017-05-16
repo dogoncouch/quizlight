@@ -74,7 +74,7 @@ Here is an example:
 
 #### Enter a reason
     
-    According to a british documentary about King Arthur, there are very dangerous rabbits out there.
+    According to a well respected british documentary about King Arthur, there are very dangerous rabbits out there.
 
 ## Contributing
 Community contributions are welcome! If you would like to add your test module so that others can use it, get in touch with the author at [dpersonsdev@gmail.com](mailto:dpersonsdev@gmail.com).
