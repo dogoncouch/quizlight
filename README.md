@@ -8,16 +8,16 @@ See the latest instructions on the [releases page](https://github.com/dogoncouch
 # Usage
 
 ## Options
-usage: quizlight [-h] [--version] [-d DIRECTORY] [--learn] [file]
-
-positional arguments:
-  file          set the module import file
-
-optional arguments:
-  -h, --help    show this help message and exit
-  --version     show program's version number and exit
-  -d DIRECTORY  set the module import directory
-  --learn       turn on learning mode (immediate answer feedback)
+    usage: quizlight [-h] [--version] [-d DIRECTORY] [--learn] [file]
+    
+    positional arguments:
+      file          set the module import file
+    
+    optional arguments:
+      -h, --help    show this help message and exit
+      --version     show program's version number and exit
+      -d DIRECTORY  set the module import directory
+      --learn       turn on learning mode (immediate answer feedback)
 
 ## Modes
 quizlight has a menu driven interface, based on the lightcli library. There are two modes: test mode, and edit mode.
