@@ -27,8 +27,22 @@ Quizlight
 
 Quizlight is simple terminal-based program for test taking and creation. It is written in Python 3. It comes with a Python 3 test module, based on `The Python Tutorial <https://docs.python.org/3/tutorial/>`_ .
 
-Usage
-`````
+Options
+```````
+
+    usage: quizlight.py [-h] [--version] [-d DIRECTORY] [--learn] [file]
+    
+    positional arguments:
+      file          set the module import file
+    
+    optional arguments:
+      -h, --help    show this help message and exit
+      --version     show program's version number and exit
+      -d DIRECTORY  set the module import directory
+      --learn       turn on learning mode (immediate answer feedback)
+
+Interface
+`````````
 
 Quizlight has a menu driven interface, based on the lightcli library. There are two modes: test mode, and edit mode. Test mode is for taking tests. Edit mode is for creating and editing tests.
 
@@ -62,7 +76,7 @@ setup(name = 'quizlight', version = str(__version__),
         entry_points = \
                 { 'console_scripts': [ 'quizlight = quizlight.core:main' ]},
         data_files = ourdata,
-        classifiers = ["Development Status :: 3 :: Alpha",
+        classifiers = ["Development Status :: 5 - Production/Stable",
             "Environment :: Console",
             "Intended Audience :: Education",
             "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)",

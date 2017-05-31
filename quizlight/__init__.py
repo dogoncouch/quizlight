@@ -1,2 +1,2 @@
-__version__ = '0.3-alpha'
+__version__ = '1.0'
 __all__ = ['core', 'quiz', 'edit']

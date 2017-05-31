@@ -19,7 +19,7 @@ See the latest instructions on the [releases page](https://github.com/dogoncouch
       -d DIRECTORY  set the module import directory
       --learn       turn on learning mode (immediate answer feedback)
 
-## Modes
+## Interface
 quizlight has a menu driven interface, based on the lightcli library. There are two modes: test mode, and edit mode.
 
 ### Test mode
