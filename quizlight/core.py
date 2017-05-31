@@ -40,7 +40,7 @@ def parse_args():
     parser.add_argument('--version', action='version',
             version='%(prog)s ' + str(__version__))
     parser.add_argument('-d', action='store',
-            default='/usr/share/doc/lightcli/modules', dest='directory',
+            default='/usr/share/doc/quizlight/modules', dest='directory',
             help=('set the module import directory'))
     parser.add_argument('--learn', action='store_true', dest='learning',
             help=('turn on learning mode (immediate answer feedback)'))
