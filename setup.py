@@ -62,7 +62,7 @@ from quizlight import __version__
 
 ourdata = [(join(prefix, 'share/man/man1'), ['doc/quizlight.1']),
         (join(prefix, 'share/doc/quizlight'), ['README.md', 'LICENSE']),
-        (join(prefix, 'share/doc/quizlight/modules'), ['modules/python3'])]
+        (join(prefix, 'share/doc/quizlight/modules'), ['modules/python3.json'])]
 
 setup(name = 'quizlight', version = str(__version__),
         description = 'A simple, modular terminal-based quiz program',
@@ -72,7 +72,7 @@ setup(name = 'quizlight', version = str(__version__),
         keywords = ['educational', 'education', 'quiz', 'testing',
             'education-game', 'education-materials', 'python3',
             'terminal-based', 'console-application', 'learning'],
-        packages = ['quizlight', 'quizlight.quiz', 'quizlight.edit'],
+        packages = ['quizlight'],
         entry_points = \
                 { 'console_scripts': [ 'quizlight = quizlight.core:main' ]},
         data_files = ourdata,
