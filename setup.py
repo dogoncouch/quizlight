@@ -66,7 +66,7 @@ ourdata = [(join(prefix, 'share/man/man1'), ['doc/quizlight.1']),
 
 setup(name = 'quizlight', version = str(__version__),
         description = 'A simple, modular terminal-based quiz program',
-        long_description = open('README.md').read(),
+        long_description = __doc__,
         author = 'Dan Persons', author_email = 'dpersonsdev@gmail.com',
         url = 'https://github.com/dogoncouch/quizlight',
         keywords = ['educational', 'education', 'quiz', 'testing',
