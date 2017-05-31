@@ -35,7 +35,7 @@ def check_save():
             qopt=True)
 
     if choice == 'y':
-        filename = lightcli.outfile_input(extension='.txt', quitopt=True)
+        filename = lightcli.outfile_input(extension='.txt')
         return filename
     else:
         return None
