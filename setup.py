@@ -71,7 +71,7 @@ setup(name = 'quizlight', version = str(__version__),
         url = 'https://github.com/dogoncouch/quizlight',
         keywords = ['educational', 'education', 'quiz', 'testing',
             'education-game', 'education-materials', 'python3',
-            'terminal-based', 'console-application', 'learning']
+            'terminal-based', 'console-application', 'learning'],
         packages = ['quizlight', 'quizlight.quiz', 'quizlight.edit'],
         entry_points = \
                 { 'console_scripts': [ 'quizlight = quizlight.core:main' ]},
