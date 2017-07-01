@@ -35,7 +35,11 @@ def check_save():
             qopt=True)
 
     if choice == 'y':
-        filename = lightcli.outfile_input(extension='.txt', quitopt=True)
+        filename = lightcli.outfile_input(extension='.txt')
+        with open(filename, 'w') as f:
+            tstamp = '\nStarted ' + \
+                    datetime.now().strftime('%Y-%m-%d %H:%M:%S') + '\n'
+            f.write(tstamp)
         return filename
     else:
         return None
@@ -52,8 +56,8 @@ def do_review(material, total, correct, resultfile=None):
     
     if resultfile:
         tstamp = 'Completed ' + datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        with open(resultfile, 'w') as f:
-            f.write('\n' + tstamp + resultstring + '\n')
+        with open(resultfile, 'a') as f:
+            f.write(tstamp + resultstring + '\n')
 
     print(resultstring)
     
